@@ -1,0 +1,11 @@
+#other-cards{
+    height: 30vh;
+    width: 10vw;
+    background-color: rgb(233, 245, 188);
+    border-radius: 5px;
+}
+
+#container-content{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,22 @@
+.container-content-navbar{
+    margin-bottom: 2rem;
+    height: 5rem;
+    background-color: cadetblue !important;
+}
+
+.logo{
+    position: absolute;
+    right: 0;
+    top: 0rem;
+    height: 8rem;
+    width: auto;
+}
+
+.container-itens-navbar{
+    width: 100%;
+    font-size: larger;
+}
+
+.dropdown-divider {
+    border: 1px solid rgb(228, 206, 7) !important;
+}

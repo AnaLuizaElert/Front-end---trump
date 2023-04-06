@@ -1,0 +1,20 @@
+.container-content-home{
+    height: 42rem;
+    margin-top: -5vh;
+    background-image: url('/src/img/1702.m10.i304.n006.F.c06.274170314 Healthy fruit hand drawn seamless vector texture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+
+#title-trunfo{
+    width: fit-content;
+    padding: 1rem;
+    margin: auto;
+    font-family: Fruta;
+    background-color: #262727de;
+    border-radius: 20px;
+    font-size: 6rem;
+    color: white;
+}
