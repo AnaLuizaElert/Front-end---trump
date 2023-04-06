@@ -1,5 +1,6 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import './edit-person.css';
+import NavBar from '../nav-bar/Nav';
 
 function EditPerson() {
 
@@ -8,7 +9,9 @@ function EditPerson() {
     }
 
   return (
-    <Form className='form-register-card'>
+    <>
+    <NavBar/>
+    <Form className='container-content'>
       <Row className="mb-3">
         <Form.Group>
           <Form.Label>Edit Name</Form.Label>
@@ -27,6 +30,7 @@ function EditPerson() {
         Submit
       </Button>
     </Form>
+    </>
   );
 }
 

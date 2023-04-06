@@ -1,6 +1,7 @@
 import CardComponent from "../card/Card"
 import { v4 } from 'uuid'
 import './show-cards.css';
+import NavBar from '../nav-bar/Nav';
 
 function ShowCards() {
 
@@ -15,6 +16,8 @@ function ShowCards() {
   ];
 
   return (
+    <>
+    <NavBar/>
     <div className="show-all-cards-container">
     <> 
     {list.map((card) => 
@@ -22,6 +25,7 @@ function ShowCards() {
     )}
     </>
     </div>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import {Button, Form} from 'react-bootstrap';
 import './delete-person.css';
+import NavBar from '../nav-bar/Nav';
 
 function DeletePerson() {
 
@@ -8,7 +9,9 @@ function handleCreate(){
 }
 
   return (
-    <Form className='form-delete-person'>
+    <>
+    <NavBar/>
+    <Form className='container-content'>
       <Form.Check 
         className='confirm-delete-person'
         type="switch"
@@ -20,6 +23,7 @@ function handleCreate(){
         Submit
       </Button>
     </Form>
+    </>
   );
 }
 

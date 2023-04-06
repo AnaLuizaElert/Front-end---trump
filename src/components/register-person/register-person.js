@@ -1,7 +1,8 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import {UserService} from "../../service/UserService.js";
 import { useState } from 'react';
-import './register-person.css';
+import NavBar from '../nav-bar/Nav';
+
 
 function RegisterPerson() {
 
@@ -39,7 +40,9 @@ function RegisterPerson() {
   }
 
   return (
-    <Form className='form-register-person' onSubmit={register}>
+    <>
+    <NavBar/>
+    <Form className='container-content' onSubmit={register}>
       <Row className="mb-3">
         <Form.Group>
           <Form.Label>Nickname</Form.Label>
@@ -65,6 +68,7 @@ function RegisterPerson() {
         Submit
       </Button>
     </Form>
+    </>
   );
 }
 

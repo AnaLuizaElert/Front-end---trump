@@ -1,7 +1,3 @@
-.form-delete-card{
-    padding: 2rem 15rem;
-}
-
 .form-switch .form-check-input:checked {
     height: 1.5rem;
     width: 3rem;
@@ -20,19 +16,7 @@
     margin-bottom: 2rem; 
 }
 
-.btn-primary {
-    --bs-btn-color: #ffffff;
-    --bs-btn-bg: #343a40;
-    --bs-btn-border-color: #ccced1;
-    --bs-btn-hover-color: rgb(255, 255, 255);
-    --bs-btn-hover-bg: #56585a;
-    --bs-btn-hover-border-color: #56585a;
-    --bs-btn-focus-shadow-rgb: 49,132,253;
-    --bs-btn-active-color: #ffffff;
-    --bs-btn-active-bg: #56585a;
-    --bs-btn-active-border-color: #e2e9f5;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #56585a;
-    --bs-btn-disabled-border-color: #56585a;
+.form-check-input:checked {
+    background-color: rgb(66, 85, 90);;
+    border-color: #a4aab3;
 }

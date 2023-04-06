@@ -1,5 +1,6 @@
 import {Form, Button} from 'react-bootstrap';
 import React, { useState } from 'react';
+import NavBar from '../nav-bar/Nav';
 import './show-card.css';
 
 function ShowCard() {
@@ -15,7 +16,9 @@ function ShowCard() {
   let verify = false;
 
   return (
-    <Form className='form-register-card'>
+    <>
+    <NavBar/>
+    <Form className='container-content'>
       <Form.Select value={selectValue} aria-label="Default select example" className='select-card' onChange={e => setSelectValue(e.target.value)}>
         {list.map((item, index) => (
             <option value={item.id}>{item.name}</option>
@@ -23,6 +26,7 @@ function ShowCard() {
       </Form.Select>
       <Button variant="primary" type="submit">Submit</Button>
     </Form>
+    </>
   );
 }
 

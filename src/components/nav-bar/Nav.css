@@ -1,15 +1,10 @@
 .container-content-navbar{
-    margin-bottom: 2rem;
     height: 5rem;
-    background-color: cadetblue !important;
-}
-
-.logo{
-    position: absolute;
-    right: 0;
-    top: 0rem;
-    height: 8rem;
-    width: auto;
+    background-color: rgba(3, 37, 0, 0.281) !important;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 0;
 }
 
 .container-itens-navbar{

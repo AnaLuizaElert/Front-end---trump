@@ -1,11 +1,12 @@
-import Form from 'react-bootstrap/Form';
 import './home.css';
+import NavBar from '../nav-bar/Nav';
 
 function Home() {
     return (
-        <Form className='container-content-home'>
-            <p id='title-trunfo'>Super trunfo das frutas</p>
-        </Form>
+        <>
+        <NavBar/>
+        <div id='background'></div>
+        </>
     );
 }
 

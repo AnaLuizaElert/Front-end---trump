@@ -4,7 +4,22 @@
 }
 
 body{
+  background-image: url("./img/Background.png");
   background-color: aliceblue;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 6rem;
+}
+
+.container-content {
+  margin: auto;
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.116);
+  padding: 4%;
+}
+
+.submit{
+  background-color: aliceblue;
+  color: rgb(66, 85, 90);
+  font-weight: bold;
 }

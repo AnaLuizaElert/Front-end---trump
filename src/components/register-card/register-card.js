@@ -1,5 +1,5 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
-import './register-card.css';
+import NavBar from '../nav-bar/Nav';
 
 function RegisterCard() {
   
@@ -32,7 +32,9 @@ function RegisterCard() {
   }
 
   return (
-    <Form className='form-register-card'>
+    <>
+    <NavBar/>
+    <Form className='container-content'>
       <Row className="mb-3">
         <Form.Group>
           <Form.Label>Name</Form.Label>
@@ -91,6 +93,7 @@ function RegisterCard() {
         Submit
       </Button>
     </Form>
+    </>
   );
 }
 

@@ -1,11 +1,79 @@
-#other-cards{
-    height: 30vh;
-    width: 10vw;
-    background-color: rgb(233, 245, 188);
-    border-radius: 5px;
-}
-
-#container-content{
+.game{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.cards-number{
+    padding: 0.5% 2%;
+    width: auto;
+    background-color: aliceblue;
+    border-radius: 2rem;
+    position: fixed;
+}
+
+.back-card{
+    height: 10rem;
+    width: 9rem;
+}
+
+.first-row{
+    width: 16rem;
+    align-items: center;
+    justify-content: start;
+}
+
+.second-row{
+    width: 20rem;
+    align-items: center;
+    justify-content: end;
+}
+
+.second-row p{
+    bottom: 2.8rem;
+    margin-left: 6rem;
+}
+
+.third-row{
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 4rem;
+    justify-content: space-between;
+}
+
+.top{
+    position: fixed;
+    top: 2rem;
+}
+
+.third-row p{
+    top: 2.8rem;
+    margin-left: 1.2rem;
+}
+
+.main-card{
+    position: fixed;
+    bottom: 0rem;
+}
+
+.bottom{
+    bottom: 1rem;
+}
+
+.button{
+    width: 10rem;
+    height: 6rem;
+    position: fixed;
+    top: 2rem;
 }

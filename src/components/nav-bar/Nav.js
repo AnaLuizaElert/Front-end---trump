@@ -37,7 +37,6 @@ function CollapsibleExample() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <img src={Watermelon} className='logo'/>
     </Navbar>
   );
 }

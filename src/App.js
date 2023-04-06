@@ -1,7 +1,6 @@
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import NavBar from './components/nav-bar/Nav';
 import React from "react";
 import Login from "./components/login/Login";
 import RegisterCard from './components/register-card/register-card'; 
@@ -19,7 +18,6 @@ import Game from "./components/game/game";
 function App() {
   return (
     <BrowserRouter>
-      <NavBar/>
       <Routes>
         <Route index path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>

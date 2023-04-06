@@ -1,5 +1,6 @@
 import {Button, Form} from 'react-bootstrap';
 import React, { useState } from 'react';
+import NavBar from '../nav-bar/Nav';
 import './delete-card.css';
 
 function DeleteCard() {
@@ -18,7 +19,9 @@ function DeleteCard() {
     }
 
   return (
-    <Form className='form-delete-card'>
+    <>
+    <NavBar/>
+    <Form className='container-content'>
       <Form.Select value={selectValue} aria-label="Default select example" className='select-card' onChange={e => setSelectValue(e.target.value)}>
         {list.map((item, index) => (
             <option value={item.id}>{item.name}</option>
@@ -32,10 +35,11 @@ function DeleteCard() {
         label="Are you sure to delete this card?"
       />
 
-      <Button variant="primary" type="submit"  onClick={handleCreate}>
+      <Button variant="primary" type="submit"  className='submit' onClick={handleCreate}>
         Submit
       </Button>
     </Form>
+    </>
   );
 }
 
