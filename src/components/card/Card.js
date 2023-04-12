@@ -1,26 +1,26 @@
 import {Card, ListGroup} from 'react-bootstrap';
 import './Card.css';
 
-const CardComponent = ({name, qtyProteins, qtyCalories, glycemiclevel, ranking, srcRanking}) => {
+const CardComponent = ({card}) => {
   return (
       <Card style={{ width: '18rem' }} className="item-card">
-        <div className='item-img' style={{backgroundImage: `url(${srcRanking})`}}>
+        <div className='item-img' style={{backgroundImage: `url(${card.srcRanking})`}}>
         </div>
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>{card.name}</Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
-            <p className='bold'>Qty proteins</p><p>{qtyProteins}</p>
+            <p className='bold'>Qty proteins</p><p>{card.qtyProteins}</p>
           </ListGroup.Item>
           <ListGroup.Item>
-            <p className='bold'>Qty Calories</p><p>{qtyCalories}</p>
+            <p className='bold'>Qty Calories</p><p>{card.qtyCalories}</p>
           </ListGroup.Item>
           <ListGroup.Item>
-            <p className='bold'>Glycemic index</p><p>{glycemiclevel}</p>
+            <p className='bold'>Glycemic index</p><p>{card.glycemiclevel}</p>
           </ListGroup.Item>
           <ListGroup.Item>
-            <p className='bold'>Ranking</p><p>{ranking}</p>
+            <p className='bold'>Ranking</p><p>{card.ranking}</p>
           </ListGroup.Item>
         </ListGroup>
       </Card>

@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.row{
+.rowGame{
     display: flex;
     flex-direction: column;
     height: 80vh;

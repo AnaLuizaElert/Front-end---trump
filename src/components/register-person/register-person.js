@@ -14,6 +14,14 @@ function RegisterPerson() {
   const editUser = (event) => {
     setUser({...user, [event.target.name] : event.target.value})
   }
+  
+  function register(event){
+    event.preventDefault();
+    showValues();
+    UserService.create(user);
+    console.log(user);
+  }
+
 
   function showValues(){
     let verifyPassword = document.querySelector('#verifyPassword');
@@ -32,12 +40,6 @@ function RegisterPerson() {
       }
   }
 
-  function register(event){
-    event.preventDefault();
-    showValues();
-    UserService.create(user);
-    console.log(user);
-  }
 
   return (
     <>

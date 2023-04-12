@@ -8,9 +8,9 @@ function Game() {
   return (
     <div className='game'>
       <div className='first-row row'>
-        <Button variant="info" className='button'>Desistir</Button>
+        <Button variant="info" className='button' href="/">Desistir</Button>
       </div>
-      <div  className='second-row row'>
+      <div  className='second-row rowGame'>
         <img src={BackCard} className='back-card bottom'/>
         <p className='cards-number'>Cartas Restantes: 8</p>
       </div>
