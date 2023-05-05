@@ -1,5 +1,5 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
-import './edit-person.css';
+import './EditPerson.css';
 import NavBar from '../nav-bar/Nav';
 
 function EditPerson() {

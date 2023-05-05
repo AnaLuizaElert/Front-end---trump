@@ -1,4 +1,4 @@
-import './home.css';
+import './Home.css';
 import NavBar from '../nav-bar/Nav';
 
 function Home() {

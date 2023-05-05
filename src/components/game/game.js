@@ -1,4 +1,4 @@
-import './game.css';
+import './Game.css';
 import CardComponent from "../card/Card"
 import Button from 'react-bootstrap/Button';
 import BackCard from '../../img/back-card.png';

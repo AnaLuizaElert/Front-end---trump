@@ -1,6 +1,6 @@
 import CardComponent from "../card/Card"
 import { v4 } from 'uuid'
-import './show-cards.css';
+import './ShowCards.css';
 import NavBar from '../nav-bar/Nav';
 import { useEffect, useState } from "react";
 
@@ -8,15 +8,14 @@ function ShowCards() {
 
   const [cards, setCards] = useState([]);
 
-  useEffect(()=>{
-    showAll().then(resposta => {
-        setCards(resposta.data)
-        console.log(cards)
-    }).catch(error =>
-      console.log(error)
-    )
-  })
-
+  // useEffect(()=>{
+  //   showAll().then(resposta => {
+  //       setCards(resposta.data)
+  //       console.log(cards)
+  //   }).catch(error =>
+  //     console.log(error)
+  //   )
+  // })
 
   const list = [
     {name: 'Abacaxi', qtyProteins: '123', qtyCalories: '123', glycemiclevel: '123', ranking: '10', srcRanking: 'https://sportlife.com.br/wp-content/uploads/2021/11/abacaxi-1.jpg'},
@@ -42,7 +41,5 @@ function ShowCards() {
     </>
   );
 };
-
-function returnCard(){}
 
 export default ShowCards;

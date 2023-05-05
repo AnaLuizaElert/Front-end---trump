@@ -1,7 +1,7 @@
 import {Button, Form} from 'react-bootstrap';
 import React, { useState } from 'react';
 import NavBar from '../nav-bar/Nav';
-import './delete-card.css';
+import './DeleteCard.css';
 
 function DeleteCard() {
 

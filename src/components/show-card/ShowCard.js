@@ -1,7 +1,7 @@
 import {Form, Button} from 'react-bootstrap';
 import React, { useState } from 'react';
 import NavBar from '../nav-bar/Nav';
-import './show-card.css';
+import './ShowCard.css';
 
 function ShowCard() {
 

@@ -1,7 +1,7 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import {UserService} from "../../service/UserService.js";
 import { useState } from 'react';
-import NavBar from '../nav-bar/Nav';
+import NavBar from '../nav-bar/Nav.js';
 
 
 function RegisterPerson() {
@@ -12,34 +12,21 @@ function RegisterPerson() {
   })
 
   const editUser = (event) => {
+    if(event.target.name == "password" || event.target.name == "verifyPassword"){
+      let pass = document.getElementById("password");
+      let verPass = document.getElementById("verifyPassword");
+      if(pass == verPass){
+        setUser({...user, ["password"] : event.target.value})
+      }
+    }
     setUser({...user, [event.target.name] : event.target.value})
   }
   
   function register(event){
     event.preventDefault();
-    showValues();
     UserService.create(user);
     console.log(user);
   }
-
-
-  function showValues(){
-    let verifyPassword = document.querySelector('#verifyPassword');
-    if(user.name != '' &&
-      user.password != '' &&
-      verifyPassword.value != ''){
-        if(user.password == verifyPassword.value){
-          alert("Valores inseridos:"
-           + "\nName -> " + user.name
-           + "\nSenha -> " + user.password);
-        } else {
-          alert("Senhas não compatíveis");
-        }
-      } else {
-        alert("Insira todos os valores");
-      }
-  }
-
 
   return (
     <>

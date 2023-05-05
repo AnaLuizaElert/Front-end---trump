@@ -1,5 +1,5 @@
 import {Button, Form} from 'react-bootstrap';
-import './delete-person.css';
+import './DeletePerson.css';
 import NavBar from '../nav-bar/Nav';
 
 function DeletePerson() {
