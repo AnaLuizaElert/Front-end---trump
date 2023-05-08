@@ -17,6 +17,8 @@ function RegisterPerson() {
       let verPass = document.getElementById("verifyPassword");
       if(pass == verPass){
         setUser({...user, ["password"] : event.target.value})
+      } else {
+        alert("Senhas diferentes!")
       }
     }
     setUser({...user, [event.target.name] : event.target.value})
@@ -26,6 +28,7 @@ function RegisterPerson() {
     event.preventDefault();
     UserService.create(user);
     console.log(user);
+    window.location.reload();
   }
 
   return (
@@ -53,7 +56,7 @@ function RegisterPerson() {
         </Form.Group>
       </Row>
 
-      <Button variant="primary" type="submit" onClick={register}>
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>

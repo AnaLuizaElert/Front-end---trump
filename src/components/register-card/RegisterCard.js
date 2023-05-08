@@ -57,7 +57,7 @@ function RegisterCard() {
       <Row className="mb-3">
         <Form.Group as={Col}>
           <Form.Label>Quantity of proteins</Form.Label>
-          <Form.Control type="number" placeholder="Qty proteins" id='qtyProteins' name='qtyProteins' onChange={editCard} value={card.qtyProteins}/>
+          <Form.Control type="number" placeholder="Qty proteins" id='qtyProteins' name='qtyProteins' onChange={editCard}/>
         </Form.Group>
 
       <Form.Group as={Col}>
@@ -69,7 +69,7 @@ function RegisterCard() {
       <Row className="mb-3">
         <Form.Group as={Col}>
           <Form.Label>Quantity of calories</Form.Label>
-          <Form.Control type="number" placeholder="Qty calories" id='qtyCalories' name='qtyCalories' onChange={editCard} value={card.qtyCalories}/>
+          <Form.Control type="number" placeholder="Qty calories" id='qtyCalories' name='qtyCalories' onChange={editCard}/>
         </Form.Group>
 
       <Form.Group as={Col}>

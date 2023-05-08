@@ -1,5 +1,5 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../nav-bar/Nav';
 import { CardService } from '../../service/CardService';
 import SelectCard from '../select-card/SelectCard';
@@ -25,6 +25,12 @@ function EditCard() {
     }
   }
 
+  const handleChangeId = (event) => {
+    event.preventDefault();
+    console.log(event.target.value)
+    setCard(event.target.value)
+  }
+
   function getQtyProteins(){
     let qtyProteinsGram = document.getElementById('gramsProteins').value;
     let qtyProteins = document.getElementById('qtyProteins').value;
@@ -43,32 +49,29 @@ function EditCard() {
     console.log(card);
   }
 
-  function showDataCard(){
-    let valueSelect = document.getElementById("form").value;
+  useEffect(() => {
+    const getCarta = async() => { 
+     await CardService.showOne(card.id).then(response => {
+          setCard(response.data);
+      }).catch(error => {
+          console.error(error);
+      })
+    } 
+    getCarta()
+  },[card.id])
 
-    console.log(valueSelect);
-
-    let chosenCard = CardService.showOne(valueSelect);
-
-    console.log(chosenCard)
-    
-    setCard({...card, ["name"] : chosenCard.name})
-    setCard({...card, ["ranking"] : chosenCard.ranking})
-    setCard({...card, ["qtyCalories"] : chosenCard.qtyCalories})
-    setCard({...card, ["qtyProteins"] : chosenCard.qtyProteins})
-    setCard({...card, ["qtyCalories"] : chosenCard.qtyCalories}) 
-
-    document.getElementById("name").value = chosenCard.name;
-    console.log(chosenCard.name)
-    }
 
   return (
     <>
     <NavBar/>
     <Form className='container-content' onSubmit={register}>
-      <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form" onChange={e => showDataCard()}>
+      <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form">
           <SelectCard />        
       </Form.Select>
+
+      <Button variant="secondary" type="submit" onClick={register()}>
+        Search
+      </Button>
 
       <Row className="mb-3">
         <Form.Group>
@@ -80,7 +83,7 @@ function EditCard() {
       <Row className="mb-3">
         <Form.Group as={Col}>
           <Form.Label>Quantity of proteins</Form.Label>
-          <Form.Control type="number" placeholder="Qty proteins" id='qtyProteins' name='qtyProteins' onChange={editCard} />
+          <Form.Control type="number" placeholder="Qty proteins" id='qtyProteins' name='qtyProteins' onChange={editCard} value={card.qtyProteins}/>
         </Form.Group>
 
       <Form.Group as={Col}>
@@ -92,12 +95,12 @@ function EditCard() {
       <Row className="mb-3">
         <Form.Group as={Col}>
           <Form.Label>Quantity of calories</Form.Label>
-          <Form.Control type="number" placeholder="Qty calories" id='qtyCalories' name='qtyCalories' onChange={editCard}/>
+          <Form.Control type="number" placeholder="Qty calories" id='qtyCalories' name='qtyCalories' onChange={editCard} value={card.qtyCalories}/>
         </Form.Group>
 
       <Form.Group as={Col}>
           <Form.Label>This amount of calories came from how many grams?</Form.Label>
-          <Form.Control type="number" placeholder="Qty grams" id='gramsCalories' name='gramsCalories' onChange={editCard} />
+          <Form.Control type="number" placeholder="Qty grams" id='gramsCalories' name='gramsCalories' onChange={editCard}/>
         </Form.Group>
       </Row>     
 
