@@ -43,7 +43,15 @@ function EditCard() {
     console.log(card);
   }
 
-  function showDataCard(chosenCard){
+  function showDataCard(){
+    let valueSelect = document.getElementById("form").value;
+
+    console.log(valueSelect);
+
+    let chosenCard = CardService.showOne(valueSelect);
+
+    console.log(chosenCard)
+    
     setCard({...card, ["name"] : chosenCard.name})
     setCard({...card, ["ranking"] : chosenCard.ranking})
     setCard({...card, ["qtyCalories"] : chosenCard.qtyCalories})
@@ -58,7 +66,7 @@ function EditCard() {
     <>
     <NavBar/>
     <Form className='container-content' onSubmit={register}>
-      <Form.Select value={card.id} aria-label="Default select example" className='select-card' onChange={e => showDataCard(e.target.value)}>
+      <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form" onChange={e => showDataCard()}>
           <SelectCard />        
       </Form.Select>
 

@@ -1,6 +1,6 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import NavBar from '../nav-bar/Nav';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { CardService } from '../../service/CardService';
 
 function RegisterCard() {
@@ -21,6 +21,7 @@ function RegisterCard() {
     } else {
       setCard({...card, [event.target.name] : event.target.value})
     }
+    console.log(card)
   }
 
   function getQtyProteins(){
@@ -39,6 +40,7 @@ function RegisterCard() {
     event.preventDefault();
     CardService.create(card);
     console.log(card);
+    window.location.reload();
   }
 
   return (
@@ -55,7 +57,7 @@ function RegisterCard() {
       <Row className="mb-3">
         <Form.Group as={Col}>
           <Form.Label>Quantity of proteins</Form.Label>
-          <Form.Control type="number" placeholder="Qty proteins" id='qtyProteins' name='qtyProteins' onChange={editCard} />
+          <Form.Control type="number" placeholder="Qty proteins" id='qtyProteins' name='qtyProteins' onChange={editCard} value={card.qtyProteins}/>
         </Form.Group>
 
       <Form.Group as={Col}>
@@ -67,7 +69,7 @@ function RegisterCard() {
       <Row className="mb-3">
         <Form.Group as={Col}>
           <Form.Label>Quantity of calories</Form.Label>
-          <Form.Control type="number" placeholder="Qty calories" id='qtyCalories' name='qtyCalories' onChange={editCard}/>
+          <Form.Control type="number" placeholder="Qty calories" id='qtyCalories' name='qtyCalories' onChange={editCard} value={card.qtyCalories}/>
         </Form.Group>
 
       <Form.Group as={Col}>
@@ -98,7 +100,6 @@ function RegisterCard() {
           </Form.Select>
         </Form.Group>
       </Row>
-
       <Button variant="primary" type="submit">
         Submit
       </Button>

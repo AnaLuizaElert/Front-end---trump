@@ -36,6 +36,14 @@ export const CardService = {
             console.error(error);
         });
     },
+
+    showOneByName: (name) => {
+        return axios.get(url + "/listOneByName/" + name).then(response => {
+            return response;
+        }).catch(error => {
+            console.error(error);
+        });
+    },
     
     showAll: () => {
         return axios.get(url + "/listAll").then(response => {
