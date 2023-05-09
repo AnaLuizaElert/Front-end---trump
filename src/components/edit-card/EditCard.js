@@ -15,6 +15,21 @@ function EditCard() {
     "ranking": 0
   });  
 
+  const [selectedCardId, setSelectedCardId] = useState(null);
+
+  useEffect(() => {
+    if (selectedCardId) {
+      CardService.showOne(selectedCardId)
+        .then((response) => {
+          setCard(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [selectedCardId]);
+
+
   const editCard = (event) => {
     if(event.target.name == "qtyProteins" || event.target.name == "gramsProteins"){
       setCard({...card, ["qtyProteins"] : getQtyProteins()})
@@ -23,12 +38,6 @@ function EditCard() {
     } else {
       setCard({...card, [event.target.name] : event.target.value})
     }
-  }
-
-  const handleChangeId = (event) => {
-    event.preventDefault();
-    console.log(event.target.value)
-    setCard(event.target.value)
   }
 
   function getQtyProteins(){
@@ -44,39 +53,27 @@ function EditCard() {
   }
 
   function register(event){
-    event.preventDefault();
     CardService.edit(card, card.id);
     console.log(card);
   }
-
-  useEffect(() => {
-    const getCarta = async() => { 
-     await CardService.showOne(card.id).then(response => {
-          setCard(response.data);
-      }).catch(error => {
-          console.error(error);
-      })
-    } 
-    getCarta()
-  },[card.id])
 
 
   return (
     <>
     <NavBar/>
     <Form className='container-content' onSubmit={register}>
-      <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form">
+      <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form"  onChange={(e) => setSelectedCardId(e.target.value)}>
           <SelectCard />        
       </Form.Select>
 
-      <Button variant="secondary" type="submit" onClick={register()}>
+      <Button variant="secondary" type="submit" onClick={register}>
         Search
       </Button>
 
       <Row className="mb-3">
         <Form.Group>
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Fruit name" id='nameValue' name='name' onChange={editCard} value={card.name}/>
+          <Form.Control type="text" placeholder="Fruit name" id='nameValue' name='name' onChange={editCard} defaultValue={card.name} value={card.name}/>
         </Form.Group>
       </Row>
 
@@ -88,7 +85,7 @@ function EditCard() {
 
       <Form.Group as={Col}>
           <Form.Label>This amount of protein came from how many grams?</Form.Label>
-          <Form.Control type="number" placeholder="Qty grams"  id='gramsProteins' name='gramsProteins' onChange={editCard}/>
+          <Form.Control type="number" placeholder="Qty grams"  id='gramsProteins' name='gramsProteins' onChange={editCard} value={1}/>
         </Form.Group>
       </Row>
 
@@ -100,7 +97,7 @@ function EditCard() {
 
       <Form.Group as={Col}>
           <Form.Label>This amount of calories came from how many grams?</Form.Label>
-          <Form.Control type="number" placeholder="Qty grams" id='gramsCalories' name='gramsCalories' onChange={editCard}/>
+          <Form.Control type="number" placeholder="Qty grams" id='gramsCalories' name='gramsCalories' onChange={editCard} value={1}/>
         </Form.Group>
       </Row>     
 
