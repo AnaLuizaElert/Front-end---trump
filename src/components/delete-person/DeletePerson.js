@@ -16,7 +16,7 @@ function handleCreate(){
         className='confirm-delete-person'
         type="switch"
         id="custom-switch"
-        label="Are you sure to delete this account?"
+        label="Are you sure you want to delete this account?"
       />
 
       <Button variant="primary" type="submit"  onClick={handleCreate}>

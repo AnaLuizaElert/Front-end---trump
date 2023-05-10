@@ -1,5 +1,9 @@
 .select-card{
     height: 4rem;
+    margin-bottom: 1rem;
+}
+
+#submitButton{
     margin-bottom: 4rem;
 }
 

@@ -66,10 +66,6 @@ function EditCard() {
           <SelectCard />        
       </Form.Select>
 
-      <Button variant="secondary" type="submit" onClick={register}>
-        Search
-      </Button>
-
       <Row className="mb-3">
         <Form.Group>
           <Form.Label>Name</Form.Label>
