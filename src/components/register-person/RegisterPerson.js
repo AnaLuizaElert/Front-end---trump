@@ -12,23 +12,28 @@ function RegisterPerson() {
   })
 
   const editUser = (event) => {
-    if(event.target.name == "password" || event.target.name == "verifyPassword"){
-      let pass = document.getElementById("password");
-      let verPass = document.getElementById("verifyPassword");
-      if(pass == verPass){
-        setUser({...user, ["password"] : event.target.value})
-      } else {
-        alert("Senhas diferentes!")
-      }
-    }
     setUser({...user, [event.target.name] : event.target.value})
   }
   
   function register(event){
     event.preventDefault();
-    UserService.create(user);
-    console.log(user);
-    window.location.reload();
+    let pass = document.getElementById("password").value;
+    let verPass = document.getElementById("verifyPassword").value;
+    if(pass === verPass){
+      let existingUser = null;
+      existingUser = UserService.showOneByName(user.name);
+      if (existingUser === '') {
+        UserService.create(user);
+        window.location.reload();
+      } else {
+        alert("Esse nome já existe!")
+        document.getElementById("name").classList.add("wrongAnswer");
+      }
+    } else {
+      alert("Senhas diferentes!")
+      document.getElementById("password").classList.add("wrongAnswer");
+      document.getElementById("verifyPassword").classList.add("wrongAnswer");
+    }
   }
 
   return (

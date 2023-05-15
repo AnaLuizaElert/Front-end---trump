@@ -23,3 +23,8 @@ body{
   color: rgb(66, 85, 90);
   font-weight: bold;
 }
+
+.wrongAnswer{
+  border: 1px solid red !important;
+  box-shadow: 0 1px 8px red !important;
+}
