@@ -14,28 +14,70 @@ function RegisterPerson() {
   const editUser = (event) => {
     setUser({...user, [event.target.name] : event.target.value})
   }
-  
-  function register(event){
+
+  function register(event) {
     event.preventDefault();
+    let name = document.getElementById("name").value;
     let pass = document.getElementById("password").value;
     let verPass = document.getElementById("verifyPassword").value;
-    if(pass === verPass){
-      let existingUser = null;
-      existingUser = UserService.showOneByName(user.name);
-      if (existingUser === '') {
-        UserService.create(user);
-        window.location.reload();
+    if(document.getElementById("name").classList.contains("wrongAnswer")){
+      document.getElementById("name").classList.remove("wrongAnswer");
+    }
+    if(document.getElementById("password").classList.contains("wrongAnswer")){
+      document.getElementById("password").classList.remove("wrongAnswer");
+    }
+    if(document.getElementById("verifyPassword").classList.contains("wrongAnswer")){
+      document.getElementById("verifyPassword").classList.remove("wrongAnswer");
+    }
+
+    if(name != '' && pass != '' && verPass != ''){
+      if (pass === verPass) {
+        UserService.showOneByName(user.name)
+          .then((result) => {
+            if (result) {
+              alert("Esse nome já existe!");
+              document.getElementById("name").classList.add("wrongAnswer");
+            } else {
+              UserService.create(user)
+                .then(() => {
+                  window.location.reload();
+                })
+                .catch((error) => {
+                  console.error("Erro na criação do usuário:", error);
+                });
+            }
+          })
+          .catch((error) => {
+            // Lidar com erros na busca do usuário
+            console.error("Erro na busca do usuário:", error);
+            UserService.create(user)
+              .then(() => {
+                window.location.reload();
+              })
+              .catch((error) => {
+                // Lidar com erros na criação do usuário
+                console.error("Erro na criação do usuário:", error);
+              });
+          });
       } else {
-        alert("Esse nome já existe!")
-        document.getElementById("name").classList.add("wrongAnswer");
+        alert("Senhas diferentes!");
+        document.getElementById("password").classList.add("wrongAnswer");
+        document.getElementById("verifyPassword").classList.add("wrongAnswer");
       }
     } else {
-      alert("Senhas diferentes!")
-      document.getElementById("password").classList.add("wrongAnswer");
-      document.getElementById("verifyPassword").classList.add("wrongAnswer");
+      alert("Preencha todos os campos!")
+      if(name == ''){
+        document.getElementById("name").classList.add("wrongAnswer");
+      }
+      if(pass == ''){
+        document.getElementById("password").classList.add("wrongAnswer");
+      }
+      if(verPass == ''){
+        document.getElementById("verifyPassword").classList.add("wrongAnswer");
+      }
     }
   }
-
+  
   return (
     <>
     <NavBar/>

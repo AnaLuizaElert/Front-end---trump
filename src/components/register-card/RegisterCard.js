@@ -1,6 +1,6 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import NavBar from '../nav-bar/Nav';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { CardService } from '../../service/CardService';
 
 function RegisterCard() {
@@ -21,7 +21,6 @@ function RegisterCard() {
     } else {
       setCard({...card, [event.target.name] : event.target.value})
     }
-    console.log(card)
   }
 
   function getQtyProteins(){
@@ -36,11 +35,75 @@ function RegisterCard() {
     return qtyCalories/qtyCaloriesGram;
   }
 
-  function register(event){
+  function register(event) {
     event.preventDefault();
-    CardService.create(card);
-    console.log(card);
-    window.location.reload();
+    let name = document.getElementById("nameValue").value;
+    let qtyCalories = document.getElementById("qtyCalories").value;
+    let qtyGlucose = document.getElementById("qtyGlucose").value;
+    let qtyProteins = document.getElementById("qtyProteins").value;
+    let ranking = document.getElementById("ranking").value;
+
+    if(document.getElementById("nameValue").classList.contains("wrongAnswer")){
+      document.getElementById("nameValue").classList.remove("wrongAnswer");
+    }
+    if(document.getElementById("qtyCalories").classList.contains("wrongAnswer")){
+      document.getElementById("qtyCalories").classList.remove("wrongAnswer");
+    }
+    if(document.getElementById("qtyGlucose").classList.contains("wrongAnswer")){
+      document.getElementById("qtyGlucose").classList.remove("wrongAnswer");
+    }
+    if(document.getElementById("qtyProteins").classList.contains("wrongAnswer")){
+      document.getElementById("qtyProteins").classList.remove("wrongAnswer");
+    }
+    if(document.getElementById("ranking").classList.contains("wrongAnswer")){
+      document.getElementById("ranking").classList.remove("wrongAnswer");
+    }
+
+    if(name != '' && qtyCalories != '' && qtyGlucose != '' && qtyGlucose != '' && qtyProteins != '' && ranking != ''){
+      CardService.showOneByName(card.name)
+        .then((result) => {
+          if (result) {
+            alert("Esse nome já existe!");
+            document.getElementById("nameValue").classList.add("wrongAnswer");
+          } else {
+            CardService.create(card)
+              .then(() => {
+                window.location.reload();
+              })
+              .catch((error) => {
+                console.error("Erro na criação do usuário:", error);
+              });
+          }
+        })
+        .catch((error) => {
+          // Lidar com erros na busca do usuário
+          console.error("Erro na busca do usuário:", error);
+          CardService.create(card)
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.error("Erro na criação do usuário:", error);
+            });
+        });
+    } else {
+      alert("Preencha todos os campos!")
+      if(name == ''){
+        document.getElementById("nameValue").classList.add("wrongAnswer");
+      }
+      if(qtyCalories == ''){
+        document.getElementById("qtyCalories").classList.add("wrongAnswer");
+      }
+      if(qtyGlucose == ''){
+        document.getElementById("qtyGlucose").classList.add("wrongAnswer");
+      }
+      if(qtyProteins == ''){
+        document.getElementById("qtyProteins").classList.add("wrongAnswer");
+      }
+      if(ranking == ''){
+        document.getElementById("ranking").classList.add("wrongAnswer");
+      }
+    }
   }
 
   return (
