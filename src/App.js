@@ -12,7 +12,9 @@ import DeletePerson from "./components/delete-person/DeletePerson";
 import ShowCards from "./components/show-cards/ShowCards";
 import ShowCard from "./components/show-card/ShowCard";
 import Home from "./components/home/Home";
-import Game from "./components/game/Game";
+import FirstPage from "./components/game/first-page/FirstPage";
+import Profile from "./components/profile/profile";
+import DistributeCards from "./components/game/show-cards/DistributeCards";
 
 
 function App() {
@@ -29,7 +31,10 @@ function App() {
         <Route path="/delete-person" element={<DeletePerson/>}/>
         <Route path="/show-cards" element={<ShowCards/>}/>
         <Route path="/show-card" element={<ShowCard/>}/>
-        <Route path="/game" element={<Game/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+
+        <Route path="/game-first-page" element={<FirstPage/>}/>
+        <Route path="/game-distribute-cards" element={<DistributeCards/>}/>
       </Routes>
     </BrowserRouter>
   );

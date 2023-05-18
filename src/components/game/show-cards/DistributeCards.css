@@ -1,0 +1,130 @@
+.game{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#simple-background-game{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../../img/SimpleBackgroundGame.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-position: right;
+    position: absolute;
+    top: 0;
+}
+
+/*Commom*/
+.border-colorful{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(5,37,2);
+    background: linear-gradient(90deg, rgba(5,37,2,1) 0%, rgba(11,121,9,1) 35%, rgba(168,249,66,1) 100%);
+    border-radius: 5px;
+    position: fixed;
+}
+
+/*Cards*/
+
+/*Commom*/
+.row{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 50vw;
+}
+
+.cards-number{
+    padding: 0.5% 2%;
+    width: auto;
+    background-color: aliceblue;
+    border-radius: 5px;
+    position: fixed;
+}
+
+.main-card{
+    position: fixed;
+    bottom: 0rem;
+}
+
+/*oponent card*/
+
+.top{
+    position: fixed;
+    top: 2rem;
+    height: 10rem;
+    width: 9rem;
+}
+
+.first-row{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    align-items: center;
+    justify-content: start;
+}
+
+.first-row p{
+    top: 2.8rem;
+    left: 45rem;
+}
+
+
+/*my card*/
+
+.bottom{
+    bottom: 1rem;
+    height: 15rem;
+    width: 13.5rem;
+}
+
+.second-row{
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: end;
+}
+
+.second-row p{
+    bottom: 2.8rem;
+    margin-left: 6rem;
+}
+
+/*Give up*/
+
+
+.border-give-up{
+    width: 7rem;
+    height: 3.5rem;
+    top: 2rem;
+    left: 2rem;
+}
+
+.button-give-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 5px;
+    min-width: 6.5rem;
+    height: 3rem;
+    top: 2rem;
+    left: 2rem;
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 1.2rem;
+    background-color: rgb(48, 90, 32);
+}
+
+.button-give-up:hover{
+    color: aliceblue;
+    background-color: rgb(74, 117, 57);
+}

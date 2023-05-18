@@ -34,11 +34,11 @@ function ShowCard() {
   return (
     <>
     <NavBar/>
-    <Form className='container-content'>
+    <Form className='container-content center-itens'>
       <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form" onChange={(e) => setSelectedCardId(e.target.value)}>
         <SelectCard />
       </Form.Select>
-      <CardComponent card={card}/>
+      <CardComponent id="card" card={card}/>
     </Form>
     </>
   );

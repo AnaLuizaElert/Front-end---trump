@@ -1,44 +1,56 @@
-import {Button, Form} from 'react-bootstrap';
 import React, { useState } from 'react';
+import { CardService } from '../../service/CardService';
 import NavBar from '../nav-bar/Nav';
+import SelectCard from '../select-card/SelectCard';
 import './DeleteCard.css';
+import { Button, Form } from 'react-bootstrap';
 
 function DeleteCard() {
+  const [card, setCard] = useState({ id: '' });
 
-    const [selectValue, setSelectValue] = useState(1);  
-    const list = [
-      {id: 0, name: 'Abacaxi'},
-      {id: 1, name: 'Melancia'},
-      {id: 2, name: 'Melão'},
-      {id: 3, name: 'Caqui'},
-    ];
+  function remove() {
+    const isSwitchSelected = document.getElementById("custom-switch").checked;
+    const id = document.getElementById("form").value;
 
-    function handleCreate(e) {
-        e.preventDefault();
-        window.location.reload();
+    if (isSwitchSelected) {
+      CardService.remove(id)
+        .then(() => {
+          alert("Carta deletada com sucesso!");
+          window.location.reload();
+        })
+        .catch(() => {
+          alert("Erro");
+        });
+    } else {
+      alert("Switch não selecionado.");
     }
+  }
 
   return (
     <>
-    <NavBar/>
-    <Form className='container-content'>
-      <Form.Select value={selectValue} aria-label="Default select example" className='select-card' onChange={e => setSelectValue(e.target.value)}>
-        {list.map((item, index) => (
-            <option value={item.id}>{item.name}</option>
-          ))}        
-      </Form.Select>
+      <NavBar />
+      <Form className='container-content'>
+        <Form.Select
+          value={card.id}
+          aria-label="Default select example"
+          className='select-card'
+          id="form"
+          onChange={(e) => setCard({ id: e.target.value })}
+        >
+          <SelectCard />
+        </Form.Select>
 
-      <Form.Check 
-        className='confirm-delete-card'
-        type="switch"
-        id="custom-switch"
-        label="Are you sure to delete this card?"
-      />
+        <Form.Check
+          className='confirm-delete-card'
+          type="switch"
+          id="custom-switch"
+          label="Are you sure to delete this card?"
+        />
 
-      <Button variant="primary" type="submit"  className='submit' onClick={handleCreate}>
-        Submit
-      </Button>
-    </Form>
+        <Button variant="primary" type="submit" className='submit' onClick={remove}>
+          Submit
+        </Button>
+      </Form>
     </>
   );
 }

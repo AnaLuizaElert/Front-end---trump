@@ -1,8 +1,6 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import {UserService} from "../../service/UserService.js";
 import { useState } from 'react';
-import NavBar from '../nav-bar/Nav.js';
-
 
 function RegisterPerson() {
 

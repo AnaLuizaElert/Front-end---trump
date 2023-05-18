@@ -1,6 +1,5 @@
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import './Nav.css';
-import Watermelon from '../../img/watermelon.png';
 
 function CollapsibleExample() {
   return (
@@ -10,7 +9,7 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/game">Game</Nav.Link>
+            <Nav.Link href="/game-first-page">Game</Nav.Link>
             <NavDropdown title="Register" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/register-card">Card</NavDropdown.Item>
               <NavDropdown.Divider/>
@@ -32,7 +31,11 @@ function CollapsibleExample() {
             </NavDropdown>
           </Nav>
           <Nav className='nav-login'>
-            <Nav.Link eventKey={2} href="/login">Logout</Nav.Link>
+            <NavDropdown title="Profile" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/profile">My account</NavDropdown.Item>
+              <NavDropdown.Item href="/login">Logout</NavDropdown.Item>
+              <NavDropdown.Divider />
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
