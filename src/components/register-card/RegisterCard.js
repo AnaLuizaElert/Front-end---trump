@@ -10,7 +10,8 @@ function RegisterCard() {
     "qtyCalories": 0,
     "qtyGlucose": 0,
     "qtyProteins": 0,
-    "ranking": 1
+    "ranking": 1,
+    "url": ""
   })
 
   const editCard = (event) => {
@@ -42,6 +43,7 @@ function RegisterCard() {
     let qtyGlucose = document.getElementById("qtyGlucose").value;
     let qtyProteins = document.getElementById("qtyProteins").value;
     let ranking = document.getElementById("ranking").value;
+    let url = document.getElementById("url").value;
 
     if(document.getElementById("nameValue").classList.contains("wrongAnswer")){
       document.getElementById("nameValue").classList.remove("wrongAnswer");
@@ -58,8 +60,11 @@ function RegisterCard() {
     if(document.getElementById("ranking").classList.contains("wrongAnswer")){
       document.getElementById("ranking").classList.remove("wrongAnswer");
     }
+    if(document.getElementById("url").classList.contains("wrongAnswer")){
+      document.getElementById("url").classList.remove("wrongAnswer");
+    }
 
-    if(name != '' && qtyCalories != '' && qtyGlucose != '' && qtyGlucose != '' && qtyProteins != '' && ranking != ''){
+    if(name != '' && qtyCalories != '' && qtyGlucose != '' && qtyGlucose != '' && qtyProteins != '' && ranking != '' && url != ''){
       CardService.showOneByName(card.name)
         .then((result) => {
           if (result) {
@@ -103,6 +108,9 @@ function RegisterCard() {
       if(ranking == ''){
         document.getElementById("ranking").classList.add("wrongAnswer");
       }
+      if(url == ''){
+        document.getElementById("url").classList.add("wrongAnswer");
+      }
     }
   }
 
@@ -142,11 +150,17 @@ function RegisterCard() {
       </Row>     
 
       <Row className="mb-3">
+      <Form.Group as={Col}>
+          <Form.Label>Fruit image url</Form.Label>
+          <Form.Control type="url" placeholder="url" id='url' name='url' onChange={editCard} value={card.url}/>
+        </Form.Group>
+      </Row>     
+
+      <Row className="mb-3">
         <Form.Group as={Col}>
             <Form.Label>What is the glycemic index of this fruit? </Form.Label>
             <Form.Control type="number" placeholder="Glycemic index" id='qtyGlucose' name='qtyGlucose' onChange={editCard} value={card.qtyGlucose}/>
         </Form.Group>
-
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Like ranking</Form.Label>
           <Form.Select id='ranking' defaultValue={1} name='ranking' onChange={editCard} value={card.ranking}>

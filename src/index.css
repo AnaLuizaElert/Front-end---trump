@@ -28,3 +28,18 @@ body{
   border: 1px solid red !important;
   box-shadow: 0 1px 8px red !important;
 }
+
+#link{
+  font-weight: bold;
+  color: aliceblue;
+  margin-top: 1rem;
+}
+
+#button-submit{
+  width: 6rem !important;
+}
+
+#column{
+  display: flex;
+  flex-direction: column;
+}

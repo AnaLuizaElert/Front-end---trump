@@ -13,7 +13,6 @@ function CollapsibleExample() {
             <Nav.Link href="/game">Game</Nav.Link>
             <NavDropdown title="Register" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/register-card">Card</NavDropdown.Item>
-              <NavDropdown.Item href="/register-person">Person</NavDropdown.Item>
               <NavDropdown.Divider/>
             </NavDropdown>
             <NavDropdown title="Edit" id="collasible-nav-dropdown">
@@ -33,7 +32,7 @@ function CollapsibleExample() {
             </NavDropdown>
           </Nav>
           <Nav className='nav-login'>
-            <Nav.Link eventKey={2} href="/login">Login</Nav.Link>
+            <Nav.Link eventKey={2} href="/login">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

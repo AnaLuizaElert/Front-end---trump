@@ -2,8 +2,6 @@ import { v4 } from 'uuid';
 import { useEffect, useState } from "react";
 import { CardService } from '../../service/CardService';
 
-// import "./SelectCartas.css";
-
 function SelectCard() {
 
     const [list, setCards] = useState([])

@@ -42,9 +42,13 @@ function Login() {
         <Form.Control type="password" placeholder="Password" id='password'/>
       </Form.Group>
 
-      <Button variant="primary" type="submit" className='submit'>
-        Submit
-      </Button>
+      <div id='column'>
+        <Button variant="primary" type="submit" className='submit' id='button-submit'>
+          Submit
+        </Button>
+
+        <a id="link" href="/register-person">Não possui uma conta?</a>
+      </div>
     </Form>
   );
 }

@@ -40,7 +40,7 @@ function RegisterPerson() {
             } else {
               UserService.create(user)
                 .then(() => {
-                  window.location.reload();
+                  window.location.href = '/login';
                 })
                 .catch((error) => {
                   console.error("Erro na criação do usuário:", error);
@@ -52,7 +52,7 @@ function RegisterPerson() {
             console.error("Erro na busca do usuário:", error);
             UserService.create(user)
               .then(() => {
-                window.location.reload();
+                window.location.href = '/login';
               })
               .catch((error) => {
                 // Lidar com erros na criação do usuário
@@ -80,7 +80,6 @@ function RegisterPerson() {
   
   return (
     <>
-    <NavBar/>
     <Form className='container-content' onSubmit={register}>
       <Row className="mb-3">
         <Form.Group>
@@ -103,9 +102,13 @@ function RegisterPerson() {
         </Form.Group>
       </Row>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div id='column'>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+
+        <a id="link" href="/login">Ir para login</a>
+      </div>
     </Form>
     </>
   );
