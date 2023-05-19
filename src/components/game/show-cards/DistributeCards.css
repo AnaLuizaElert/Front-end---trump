@@ -33,7 +33,7 @@
 /*Cards*/
 
 /*Commom*/
-.row{
+.row-distribute{
     display: flex;
     flex-direction: column;
     height: 80vh;

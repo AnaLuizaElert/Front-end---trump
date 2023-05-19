@@ -15,13 +15,15 @@ function Login() {
         console.log(responseName.data.password);
         if (responseName.data.password == pas) {
           localStorage.setItem("user", name);
-          window.location.href = '/';
+          window.location.href = '/home';
         } else {
           alert("Dados incorretos!");
           document.getElementById("name").classList.add("wrongAnswer");
           document.getElementById("password").classList.add("wrongAnswer");
         }
       } else {
+        document.getElementById("name").classList.add("wrongAnswer");
+        document.getElementById("password").classList.add("wrongAnswer");
         alert("Dados incorretos!");
       }
     })

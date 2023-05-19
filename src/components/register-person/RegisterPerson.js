@@ -38,7 +38,7 @@ function RegisterPerson() {
             } else {
               UserService.create(user)
                 .then(() => {
-                  window.location.href = '/login';
+                  window.location.href = '/';
                 })
                 .catch((error) => {
                   console.error("Erro na criação do usuário:", error);
@@ -50,7 +50,7 @@ function RegisterPerson() {
             console.error("Erro na busca do usuário:", error);
             UserService.create(user)
               .then(() => {
-                window.location.href = '/login';
+                window.location.href = '/';
               })
               .catch((error) => {
                 // Lidar com erros na criação do usuário
@@ -105,7 +105,7 @@ function RegisterPerson() {
           Submit
         </Button>
 
-        <a id="link" href="/login">Ir para login</a>
+        <a id="link" href="/">Ir para login</a>
       </div>
     </Form>
     </>

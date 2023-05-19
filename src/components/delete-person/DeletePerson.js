@@ -44,7 +44,7 @@ function DeletePerson() {
           variant='primary'
           type='submit'
           onClick={remove}
-          href={isSwitchSelected ? '/login' : '/delete-person'}
+          href={isSwitchSelected ? '/' : '/delete-person'}
         >
           Submit
         </Button>

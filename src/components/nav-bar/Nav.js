@@ -5,7 +5,7 @@ function CollapsibleExample() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='container-content-navbar'>
       <Container className='container-itens-navbar'>
-        <Navbar.Brand href="/">Super Trunfo</Navbar.Brand>
+        <Navbar.Brand href="/home">Super Trunfo</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -33,7 +33,7 @@ function CollapsibleExample() {
           <Nav className='nav-login'>
             <NavDropdown title="Profile" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/profile">My account</NavDropdown.Item>
-              <NavDropdown.Item href="/login">Logout</NavDropdown.Item>
+              <NavDropdown.Item href="/">Logout</NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
           </Nav>

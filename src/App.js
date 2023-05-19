@@ -21,8 +21,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index path="/login" element={<Login/>}/>
-        <Route path="/" element={<Home/>}/>
+        <Route index path="/" element={<Login/>}/>
+        <Route path="/home" element={<Home/>}/>
         <Route path="/register-card" element={<RegisterCard/>}/>
         <Route path="/register-person" element={<RegisterPerson/>}/>
         <Route path="/edit-card" element={<EditCard/>}/>
