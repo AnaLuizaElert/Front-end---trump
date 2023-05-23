@@ -16,7 +16,6 @@ import FirstPage from "./components/game/first-page/FirstPage";
 import Profile from "./components/profile/profile";
 import DistributeCards from "./components/game/show-cards/DistributeCards";
 
-
 function App() {
   return (
     <BrowserRouter>

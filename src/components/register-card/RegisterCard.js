@@ -2,6 +2,9 @@ import {Button, Col, Form, Row} from 'react-bootstrap';
 import NavBar from '../nav-bar/Nav';
 import { useState } from 'react';
 import { CardService } from '../../service/CardService';
+import { FileUploader } from '@aws-amplify/ui-react'; 
+import '@aws-amplify/ui-react/styles.css'
+
 
 function RegisterCard() {
   
@@ -150,10 +153,10 @@ function RegisterCard() {
       </Row>     
 
       <Row className="mb-3">
-      <Form.Group as={Col}>
-          <Form.Label>Fruit image url</Form.Label>
-          <Form.Control type="url" placeholder="url" id='url' name='url' onChange={editCard} value={card.url}/>
-        </Form.Group>
+        <FileUploader
+        acceptedFileTypes={['image/*']}
+        accessLevel="public"
+        />
       </Row>     
 
       <Row className="mb-3">
