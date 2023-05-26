@@ -51,5 +51,21 @@ export const CardService = {
         }).catch(error => {
             console.error(error);
         });
+    },
+
+    page: (page, size) => {
+        return axios.get(url + "/page?page=" + page + "&size=" + size).then(response => {
+            return response;
+        }).catch(error => {
+            console.error(error);
+        });
+    },
+
+    qtyCards: () => {
+        return axios.get(url + "/qtyCards").then(response => {
+            return response;
+        }).catch(error => {
+            console.error(error);
+        });
     }
 }
