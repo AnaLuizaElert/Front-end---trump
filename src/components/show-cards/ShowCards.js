@@ -8,48 +8,60 @@ import './ShowCards.css';
 
 function ShowCards() {
   const [cards, setCards] = useState([]);
-  let active = 1;
-  let items = [];
-  let qtyItems = 0;
+  const [active, setActive] = useState(1);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCards = async () => {
       try {
         const qtyCards = await CardService.qtyCards();
         const response = await CardService.page(active, 9);
-        const data = response.data;
-        
-        let number = parseInt(qtyCards.data / 9);
-        alert(number)
-        do {
-          number--;
-          items.push(
-            <Pagination.Item key={uuidv4()} active={(number + 1) === active}>
-              {number + 1}
-            </Pagination.Item>,
+        setCards(response.data.content);
+        console.log(response.data)
+
+        let number = Math.ceil(qtyCards.data / 9);
+        const newItems = [];
+        for (let i = 1; i <= number; i++) {
+          newItems.push(
+            <Pagination.Item key={uuidv4()} active={i === active} onClick={() => setActive(i)}>
+              {i}
+            </Pagination.Item>
           );
-        } while (number !== 0);
-        
-        setCards(data);
+        }
+        setItems(newItems);
+
+        setLoading(false); // Indicar que o carregamento está completo
+
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchCards();
-  }, []);
+  }, [active]);
 
   return (
     <>
       <NavBar />
-      <div className="show-all-cards-container">
-        {cards.map((card) => (
-          <CardComponent key={uuidv4()} card={card} />
-        ))}
-      </div>
-      <div>
-        <Pagination>{items}</Pagination>
-      </div>
+      {loading ? (
+        <div>Carregando...</div>
+      ) : (
+        <>
+          {cards.length > 0 ? (
+            <div className="show-all-cards-container">
+              {cards.map((card) => (
+                <CardComponent key={uuidv4()} card={card} />
+              ))}
+            </div>
+          ) : (
+            <div>Nenhum card encontrado</div>
+          )}
+          <div className="pagination">
+            <Pagination>{items}</Pagination>
+          </div>
+        </>
+      )}
     </>
   );
 }
