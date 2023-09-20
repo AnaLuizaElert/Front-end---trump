@@ -1,30 +1,25 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { UserService } from '../../service/UserService';
+import { AuthenticationService } from '../../service/AuthenticationService';
+import { useState } from 'react';
 
 function Login() {
+
+  const [login, setLogin] = useState({
+    "username": "",
+    "password": ""
+  })
   
   function saveInfo(event){
     event.preventDefault();
-    let name = document.getElementById("name").value;
-    let pas = document.getElementById("password").value;
-    UserService.showOneByName(name)
-    .then((responseName) => {
-      if (responseName) {
-        console.log(pas);
-        console.log(responseName.data.password);
-        if (responseName.data.password == pas) {
-          localStorage.setItem("user", name);
+    AuthenticationService.login(login)
+    .then((response) => {
+      if (response) {
+          localStorage.setItem("user", login.username);
           window.location.href = '/home';
-        } else {
-          alert("Dados incorretos!");
-          document.getElementById("name").classList.add("wrongAnswer");
-          document.getElementById("password").classList.add("wrongAnswer");
-        }
       } else {
         document.getElementById("name").classList.add("wrongAnswer");
         document.getElementById("password").classList.add("wrongAnswer");
-        alert("Dados incorretos!");
       }
     })
     .catch((error) => {
@@ -36,12 +31,24 @@ function Login() {
     <Form className='container-content' onSubmit={saveInfo}>
       <Form.Group className="mb-3">
         <Form.Label >Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter name" id='name'/>
+        <Form.Control 
+          type="text" 
+          placeholder="Enter name" 
+          id='name' 
+          name='username' 
+          value={login.username} 
+          onChange={(event) => setLogin({...login, username : event.target.value})} />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" id='password'/>
+        <Form.Control 
+          type="password" 
+          placeholder="Password" 
+          id='password'
+          name='password' 
+          value={login.password} 
+          onChange={(event) => setLogin({...login, password : event.target.value})} />
       </Form.Group>
 
       <div id='column'>
