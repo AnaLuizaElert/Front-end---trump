@@ -11,10 +11,10 @@ import DeleteCard from "./components/delete-card/DeleteCard";
 import DeletePerson from "./components/delete-person/DeletePerson";
 import ShowCards from "./components/show-cards/ShowCards";
 import ShowCard from "./components/show-card/ShowCard";
-import Home from "./components/home/Home";
 import FirstPage from "./components/game/first-page/FirstPage";
 import Profile from "./components/profile/profile";
 import DistributeCards from "./components/game/show-cards/DistributeCards";
+import Home from "./components/home/Home";
 
 function App() {
   return (
