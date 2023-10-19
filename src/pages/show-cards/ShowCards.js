@@ -1,10 +1,19 @@
-import { CardService } from "../../service/CardService";
-import Pagination from 'react-bootstrap/Pagination';
-import { useEffect, useState } from "react";
-import CardComponent from "../card/Card";
-import { v4 as uuidv4 } from 'uuid';
-import NavBar from '../nav-bar/Nav';
+//style
 import './ShowCards.css';
+import Pagination from 'react-bootstrap/Pagination';
+
+//react
+import { useEffect, useState } from "react";
+
+//component
+import CardComponent from "../../components/card/Card";
+import NavBar from '../../components/nav-bar/Nav';
+
+//service
+import { CardService } from "../../service/CardService";
+
+//external
+import { v4 as uuidv4 } from 'uuid';
 
 function ShowCards() {
   const [cards, setCards] = useState([]);
@@ -30,9 +39,8 @@ function ShowCards() {
           );
         }
         setItems(newItems);
-
-        setLoading(false); // Indicar que o carregamento está completo
-
+        setLoading(false); // Indica que o carregamento está completo
+        
       } catch (error) {
         console.error(error);
       }

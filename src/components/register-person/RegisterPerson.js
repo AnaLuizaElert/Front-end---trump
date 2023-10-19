@@ -1,6 +1,11 @@
+//style
 import {Button, Col, Form, Row} from 'react-bootstrap';
-import {UserService} from "../../service/UserService.js";
+
+//react
 import { useState } from 'react';
+
+//service
+import {UserService} from "../../service/UserService.js";
 
 function RegisterPerson() {
 

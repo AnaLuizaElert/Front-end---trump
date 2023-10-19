@@ -1,71 +1,78 @@
-import React from 'react'
 import axios from 'axios'
 const url = "http://localhost:8082/card"
 
 export const CardService = {
-    
-    create: (card) => {
-        return axios.post(url + "/create", card).then(response => {
-            return response;
-        }).catch(error => {
+
+    create: async (card) => {
+        try {
+            const response = await axios.post(url + "/create", card);
+            return response.data;
+        } catch (error) {
             console.error(error);
-        });
+        }
     },
 
-    remove: (id) => {
-        axios.delete(url + "/delete/" + id).then(response => {
-            return response;
-        }).catch(error => {
+    remove: async (id) => {
+        try {
+            const response = await axios.delete(url + "/delete/" + id)
+            return response.data;
+        } catch (error) {
             console.error(error);
-            return error;
-        });
+        }
     },
 
-    edit: (card, id) => {
-        return axios.put(url + "/edit/" + id, card).then(response => {
-            return response;
-        }).catch(error => {
+    edit: async (card, id) => {
+        try {
+            const response = await axios.put(url + "/edit/" + id, card)
+            return response.data;
+        } catch (error) {
             console.error(error);
-        });
+        }
     },
 
-    showOne: (id) => {
-        return axios.get(url + "/listOne/" + id).then(response => {
-            return response;
-        }).catch(error => {
+
+    showOne: async (id) => {
+        try {
+            const response = await axios.get(url + "/listOne/" + id)
+            return response.data;
+        } catch (error) {
             console.error(error);
-        });
+        }
     },
 
-    showOneByName: (name) => {
-        return axios.get(url + "/listOneByName/" + name).then(response => {
-            return response;
-        }).catch(error => {
+    showOneByName: async (name) => {
+        try {
+            const response = await axios.get(url + "/listOneByName/" + name)
+            return response.data;
+        } catch (error) {
             console.error(error);
-        });
-    },
-    
-    showAll: () => {
-        return axios.get(url + "/listAll").then(response => {
-            return response;
-        }).catch(error => {
-            console.error(error);
-        });
+        }
     },
 
-    page: (page, size) => {
-        return axios.get(url + "/page?page=" + page + "&size=" + size).then(response => {
-            return response;
-        }).catch(error => {
+    showAll: async () => {
+        try {
+            const response = await axios.get(url + "/listAll")
+            return response.data;
+        } catch (error) {
             console.error(error);
-        });
+        }
     },
 
-    qtyCards: () => {
-        return axios.get(url + "/qtyCards").then(response => {
-            return response;
-        }).catch(error => {
+    page: async (page, size) => {
+        try {
+            const response = await axios.get(url + "/page?page=" + page + "&size=" + size);
+            return response.data;
+        } catch (error) {
             console.error(error);
-        });
+        }
+    },
+
+    qtyCards: async () => {
+        try {
+            const response = await axios.get(url + "/qtyCards")
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
     }
 }

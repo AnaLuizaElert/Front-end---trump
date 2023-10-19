@@ -1,10 +1,17 @@
-import {Form, Button, Card} from 'react-bootstrap';
-import React, { useState, useEffect} from 'react';
-import SelectCard from '../select-card/SelectCard';
-import CardComponent from '../card/Card';
-import { CardService } from '../../service/CardService';
-import NavBar from '../nav-bar/Nav';
+//style
 import './ShowCard.css';
+import {Form} from 'react-bootstrap';
+
+//react
+import React, { useState, useEffect} from 'react';
+
+//components
+import CardComponent from '../card/Card';
+import NavBar from '../nav-bar/Nav';
+import SelectCard from '../select-card/SelectCard';
+
+//service
+import { CardService } from '../../service/CardService';
 
 function ShowCard() {
 

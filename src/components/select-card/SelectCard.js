@@ -1,6 +1,11 @@
-import { v4 } from 'uuid';
+//react
 import { useEffect, useState } from "react";
+
+//service
 import { CardService } from '../../service/CardService';
+
+//external
+import { v4 } from 'uuid';
 
 function SelectCard() {
 
@@ -8,7 +13,6 @@ function SelectCard() {
 
     useEffect(() => {
         CardService.showAll().then(response => {
-            console.log(response)
             setCards(response.data)
         }).catch(erro =>
             console.log(erro)
