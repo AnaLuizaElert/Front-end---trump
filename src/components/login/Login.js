@@ -1,7 +1,12 @@
+//style
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { AuthenticationService } from '../../service/AuthenticationService';
+
+//react
 import { useState } from 'react';
+
+//service
+import { AuthenticationService } from '../../service/AuthenticationService';
 
 function Login() {
 
@@ -39,7 +44,6 @@ function Login() {
           value={login.username} 
           onChange={(event) => setLogin({...login, username : event.target.value})} />
       </Form.Group>
-
       <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
         <Form.Control 
@@ -50,12 +54,10 @@ function Login() {
           value={login.password} 
           onChange={(event) => setLogin({...login, password : event.target.value})} />
       </Form.Group>
-
       <div id='column'>
         <Button variant="primary" type="submit" className='submit' id='button-submit'>
           Submit
         </Button>
-
         <a id="link" href="/register-person">Não possui uma conta?</a>
       </div>
     </Form>

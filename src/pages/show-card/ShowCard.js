@@ -6,9 +6,9 @@ import {Form} from 'react-bootstrap';
 import React, { useState, useEffect} from 'react';
 
 //components
-import CardComponent from '../card/Card';
-import NavBar from '../nav-bar/Nav';
-import SelectCard from '../select-card/SelectCard';
+import CardComponent from '../../components/card/Card';
+import NavBar from '../../components/nav-bar/Nav';
+import SelectCard from '../../components/select-card/SelectCard';
 
 //service
 import { CardService } from '../../service/CardService';

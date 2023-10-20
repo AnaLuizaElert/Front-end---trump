@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import NavBar from '../nav-bar/Nav';
-import { UserService } from '../../service/UserService.js';
+//style
 import './DeletePerson.css';
+import { Button, Form } from 'react-bootstrap';
+
+//react
+import React, { useState } from 'react';
+
+//components
+import NavBar from '../nav-bar/Nav';
+
+//service
+import { UserService } from '../../service/UserService.js';
+
 
 function DeletePerson() {
   const [isSwitchSelected, setIsSwitchSelected] = useState(false);
 
-  function remove() {
+  async function remove() {
     if (isSwitchSelected) {
-      UserService.showOneByName(localStorage.getItem('user'))
-        .then((response) => {
-          UserService.remove(response.data.id)
-            .then(() => {
-              window.location.href = '/login';
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      const response = await UserService.showOneByName(localStorage.getItem('user'));
+      await UserService.remove(response.id)
+      window.location.href = '/login';
     } else {
       alert('Switch não selecionado.');
     }
@@ -39,13 +37,11 @@ function DeletePerson() {
           checked={isSwitchSelected}
           onChange={(e) => setIsSwitchSelected(e.target.checked)}
         />
-
         <Button
           variant='primary'
           type='submit'
           onClick={remove}
-          href={isSwitchSelected ? '/' : '/delete-person'}
-        >
+          href={isSwitchSelected ? '/' : '/delete-person'}>
           Submit
         </Button>
       </Form>

@@ -1,20 +1,24 @@
-import { Routes, BrowserRouter, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//style
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//react
 import React from "react";
+import { Routes, BrowserRouter, Route } from "react-router-dom";
+//pages
+import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import RegisterCard from './components/register-card/RegisterCard'; 
 import RegisterPerson from './components/register-person/RegisterPerson';
+import ShowCard from './pages/show-card/ShowCard';
+import ShowCards from './pages/show-cards/ShowCards';
 import EditCard from './components/edit-card/EditCard';
 import EditPerson from './components/edit-person/EditPerson';
 import DeleteCard from "./components/delete-card/DeleteCard";
 import DeletePerson from "./components/delete-person/DeletePerson";
-import ShowCards from "./components/show-cards/ShowCards";
-import ShowCard from "./components/show-card/ShowCard";
+
 import FirstPage from "./components/game/first-page/FirstPage";
 import Profile from "./components/profile/profile";
 import DistributeCards from "./components/game/show-cards/DistributeCards";
-import Home from "./components/home/Home";
 
 function App() {
   return (
@@ -31,7 +35,6 @@ function App() {
         <Route path="/show-cards" element={<ShowCards/>}/>
         <Route path="/show-card" element={<ShowCard/>}/>
         <Route path="/profile" element={<Profile/>}/>
-
         <Route path="/game-first-page" element={<FirstPage/>}/>
         <Route path="/game-distribute-cards" element={<DistributeCards/>}/>
       </Routes>

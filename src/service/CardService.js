@@ -5,16 +5,7 @@ export const CardService = {
 
     create: async (card) => {
         try {
-            const response = await axios.post(url + "/create", card);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }
-    },
-
-    remove: async (id) => {
-        try {
-            const response = await axios.delete(url + "/delete/" + id)
+            const response = await axios.post(url, card);
             return response.data;
         } catch (error) {
             console.error(error);
@@ -29,7 +20,6 @@ export const CardService = {
             console.error(error);
         }
     },
-
 
     showOne: async (id) => {
         try {
@@ -51,7 +41,7 @@ export const CardService = {
 
     showAll: async () => {
         try {
-            const response = await axios.get(url + "/listAll")
+            const response = await axios.get(url)
             return response.data;
         } catch (error) {
             console.error(error);
@@ -74,5 +64,14 @@ export const CardService = {
         } catch (error) {
             console.error(error);
         }
-    }
+    },
+
+    remove: async (id) => {
+        try {
+            const response = await axios.delete(url + "/delete/" + id)
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    },
 }

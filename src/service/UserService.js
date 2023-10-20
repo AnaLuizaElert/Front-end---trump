@@ -4,16 +4,7 @@ const url = "http://localhost:8082/user"
 export const UserService = {
     create: async (user) => {
         try {
-            const response = await axios.post(url + "/create", user)
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }
-    },
-
-    remove: async (id) => {
-        try {
-            const response = await axios.delete(url + "/delete/" + id)
+            const response = await axios.post(url, user)
             return response.data;
         } catch (error) {
             console.error(error);
@@ -22,7 +13,7 @@ export const UserService = {
 
     edit: async (user, id) => {
         try {
-            const response = await axios.put(url + "/edit/" + id, user)
+            const response = await axios.put(url + "/" + id, user)
             return response.data;
         } catch (error) {
             console.error(error);
@@ -49,11 +40,20 @@ export const UserService = {
 
     showAll: async () => {
         try {
-            const response = await axios.get(url + "/listAll")
+            const response = await axios.get(url)
             return response.data;
         } catch (error) {
             console.error(error);
         }
-    }
+    }, 
+    
+    remove: async (id) => {
+        try {
+            const response = await axios.delete(url + "/" + id)
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    },
 
 }
