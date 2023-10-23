@@ -6,8 +6,8 @@ import { Button, Form } from 'react-bootstrap';
 import React, { useState } from 'react';
 
 //components
-import NavBar from '../nav-bar/Nav';
-import SelectCard from '../select-card/SelectCard';
+import NavBar from '../../components/nav-bar/Nav';
+import SelectCard from '../../components/select-card/SelectCard';
 
 //service
 import { CardService } from '../../service/CardService';

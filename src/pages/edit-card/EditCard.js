@@ -1,8 +1,8 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
-import NavBar from '../nav-bar/Nav';
+import NavBar from '../../components/nav-bar/Nav';
 import { CardService } from '../../service/CardService';
-import SelectCard from '../select-card/SelectCard';
+import SelectCard from '../../components/select-card/SelectCard';
 import './EditCard.css';
 
 function EditCard() {

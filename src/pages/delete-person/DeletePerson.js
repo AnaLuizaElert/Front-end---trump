@@ -6,7 +6,7 @@ import { Button, Form } from 'react-bootstrap';
 import React, { useState } from 'react';
 
 //components
-import NavBar from '../nav-bar/Nav';
+import NavBar from '../../components/nav-bar/Nav';
 
 //service
 import { UserService } from '../../service/UserService.js';

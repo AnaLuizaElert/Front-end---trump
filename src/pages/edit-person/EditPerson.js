@@ -167,7 +167,7 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import './EditPerson.css';
 import React, { useEffect, useState } from 'react';
-import NavBar from '../nav-bar/Nav';
+import NavBar from '../../components/nav-bar/Nav';
 import { UserService } from '../../service/UserService';
 
 function EditPerson() {

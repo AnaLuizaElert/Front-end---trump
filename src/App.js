@@ -5,19 +5,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 //pages
-import Home from "./components/home/Home";
-import Login from "./components/login/Login";
-import RegisterCard from './components/register-card/RegisterCard'; 
-import RegisterPerson from './components/register-person/RegisterPerson';
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import RegisterCard from './pages/register-card/RegisterCard'; 
+import RegisterPerson from './pages/register-person/RegisterPerson';
 import ShowCard from './pages/show-card/ShowCard';
 import ShowCards from './pages/show-cards/ShowCards';
-import EditCard from './components/edit-card/EditCard';
-import EditPerson from './components/edit-person/EditPerson';
-import DeleteCard from "./components/delete-card/DeleteCard";
-import DeletePerson from "./components/delete-person/DeletePerson";
+import EditCard from './pages/edit-card/EditCard';
+import EditPerson from './pages/edit-person/EditPerson';
+import DeleteCard from "./pages/delete-card/DeleteCard";
+import DeletePerson from "./pages/delete-person/DeletePerson";
 
 import FirstPage from "./components/game/first-page/FirstPage";
-import Profile from "./components/profile/profile";
+import Profile from "./pages/profile/profile";
 import DistributeCards from "./components/game/show-cards/DistributeCards";
 
 function App() {

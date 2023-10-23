@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import NavBar from '../nav-bar/Nav';
+import NavBar from '../../components/nav-bar/Nav';
 import { UserService } from '../../service/UserService';
 import './profile.css';
 

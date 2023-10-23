@@ -1,5 +1,5 @@
 import {Button, Col, Form, Row} from 'react-bootstrap';
-import NavBar from '../nav-bar/Nav';
+import NavBar from '../../components/nav-bar/Nav';
 import { useState } from 'react';
 import { CardService } from '../../service/CardService';
 import { FileUploader } from '@aws-amplify/ui-react'; 
