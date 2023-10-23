@@ -23,7 +23,7 @@ function RegisterPerson() {
     let name = document.getElementById("name").value;
     let pass = document.getElementById("password").value;
     let verPass = document.getElementById("verifyPassword").value;
-    
+
     if (document.getElementById("name").classList.contains("wrongAnswer")) {
       document.getElementById("name").classList.remove("wrongAnswer");
     }
@@ -36,32 +36,15 @@ function RegisterPerson() {
 
     if (name && pass && verPass) {
       if (pass === verPass) {
-        UserService.showOneByName(user.name)
-          .then((result) => {
-            if (result) {
-              alert("Esse nome já existe!");
-              document.getElementById("name").classList.add("wrongAnswer");
-            } else {
-              UserService.create(user)
-                .then(() => {
-                  window.location.href = '/';
-                })
-                .catch((error) => {
-                  console.error("Erro na criação do usuário:", error);
-                });
-            }
+
+        UserService.create(user)
+          .then(() => {
+            window.location.href = '/';
           })
           .catch((error) => {
-            // Lidar com erros na busca do usuário
-            console.error("Erro na busca do usuário:", error);
-            UserService.create(user)
-              .then(() => {
-                window.location.href = '/';
-              })
-              .catch((error) => {
-                console.error("Erro na criação do usuário:", error);
-              });
+            console.error("Erro na criação do usuário:", error);
           });
+
       } else {
         alert("Senhas diferentes!");
         document.getElementById("password").classList.add("wrongAnswer");
