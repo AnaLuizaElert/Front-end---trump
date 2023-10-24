@@ -24,23 +24,23 @@ function ShowCards() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
+        window.scrollTo(0,0)
         const qtyCards = await CardService.qtyCards();
         const response = await CardService.page(active, 9);
-        setCards(response.data.content);
-        console.log(response.data)
+        setCards(response.content);
+        console.log(qtyCards)
 
-        let number = Math.ceil(qtyCards.data / 9);
+        let number = Math.floor(qtyCards / 9);
         const newItems = [];
-        for (let i = 1; i <= number; i++) {
+        for (let i = 0; i <= number; i++) {
           newItems.push(
             <Pagination.Item key={uuidv4()} active={i === active} onClick={() => setActive(i)}>
-              {i}
+              {i + 1}
             </Pagination.Item>
           );
         }
         setItems(newItems);
-        setLoading(false); // Indica que o carregamento está completo
-        
+        setLoading(false); 
       } catch (error) {
         console.error(error);
       }

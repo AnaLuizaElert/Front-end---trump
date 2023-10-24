@@ -15,10 +15,10 @@ function Profile() {
   useEffect(() => {
     UserService.showOneByName(localStorage.getItem('user'))
       .then((response) => {
-        setUserName(response.data.name);
-        setVictoryQty(response.data.qtyVitories);
-        setLossesQty(response.data.qtyLosses);
-        setPoints(response.data.points);
+        setUserName(response.name);
+        setVictoryQty(response.qtyVitories);
+        setLossesQty(response.qtyLosses);
+        setPoints(response.points);
       })
       .catch((error) => {
         console.log(error);

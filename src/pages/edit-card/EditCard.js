@@ -15,6 +15,7 @@ function EditCard() {
     "ranking": 0,
     "url": ""
   });
+  const arrayIds = ["nameValue", "qtyCalories", "qtyGlucose", "qtyProteins", "ranking", "url"]
 
   const [selectedCardId, setSelectedCardId] = useState(null);
 
@@ -22,14 +23,13 @@ function EditCard() {
     if (selectedCardId) {
       CardService.showOne(selectedCardId)
         .then((response) => {
-          setCard(response.data);
+          setCard(response);
         })
         .catch((error) => {
           console.error(error);
         });
     }
   }, [selectedCardId]);
-
 
   const editCard = (event) => {
     if (event.target.name == "qtyProteins" || event.target.name == "gramsProteins") {
@@ -53,87 +53,38 @@ function EditCard() {
     return qtyCalories / qtyCaloriesGram;
   }
 
+  function removeWrongAnswer() {
+    for (let id of arrayIds) {
+      const element = document.getElementById(id);
+      if (element?.classList.contains("wrongAnswer")) {
+        element.classList.remove("wrongAnswer");
+      }
+    }
+  }
+
+  function addWrongAnswer() {
+    let isFull = true;
+    for (let id of arrayIds) {
+      const element = document.getElementById(id);
+      if (element?.value === '') {
+        element.classList.add("wrongAnswer");
+        isFull = false;
+      }
+    }
+    return isFull;
+  }
+
   function register(event) {
     event.preventDefault();
-    let name = document.getElementById("nameValue").value;
-    let qtyCalories = document.getElementById("qtyCalories").value;
-    let qtyGlucose = document.getElementById("qtyGlucose").value;
-    let qtyProteins = document.getElementById("qtyProteins").value;
-    let ranking = document.getElementById("ranking").value;
-    let url = document.getElementById("url").value;
+    removeWrongAnswer();
 
-    if (document.getElementById("nameValue").classList.contains("wrongAnswer")) {
-      document.getElementById("nameValue").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("qtyCalories").classList.contains("wrongAnswer")) {
-      document.getElementById("qtyCalories").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("qtyGlucose").classList.contains("wrongAnswer")) {
-      document.getElementById("qtyGlucose").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("qtyProteins").classList.contains("wrongAnswer")) {
-      document.getElementById("qtyProteins").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("ranking").classList.contains("wrongAnswer")) {
-      document.getElementById("ranking").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("url").classList.contains("wrongAnswer")) {
-      document.getElementById("url").classList.remove("wrongAnswer");
-    }
-
-    if (name != '' && qtyCalories != '' && qtyGlucose != '' && qtyGlucose != '' && qtyProteins != '' && ranking != '' && url != '') {
-      CardService.showOneByName(card.name).then((resultName) => {
-        if (resultName) {
-          CardService.showOne(card.id).then((resultId) => {
-            console.log("stop1")
-            if (resultId.data.name == resultName.data.name) {
-              CardService.edit(card, card.id)
-                .then(() => {
-                  window.location.reload();
-                })
-                .catch((error) => {
-                  console.error("Erro na criação da carta:", error);
-                });
-            } else {
-              alert("Esse nome já existe!");
-              document.getElementById("nameValue").classList.add("wrongAnswer");
-            }
-          })
-        } else {
-          console.log("stop2")
-          CardService.edit(card, card.id);
-        }
-      }).catch((error) => {
-        // Lidar com erros na busca da carta
-        console.error("Erro na busca da carta:", error);
-        CardService.edit(card, card.id)
-          .then(() => {
-            window.location.reload();
-          })
-          .catch((error) => {
-            console.error("Erro na criação da carta:", error);
-          });
-      });
-    } else {
-      alert("Preencha todos os campos!")
-      if (name == '') {
-        document.getElementById("nameValue").classList.add("wrongAnswer");
-      }
-      if (qtyCalories == '') {
-        document.getElementById("qtyCalories").classList.add("wrongAnswer");
-      }
-      if (qtyGlucose == '') {
-        document.getElementById("qtyGlucose").classList.add("wrongAnswer");
-      }
-      if (qtyProteins == '') {
-        document.getElementById("qtyProteins").classList.add("wrongAnswer");
-      }
-      if (ranking == '') {
-        document.getElementById("ranking").classList.add("wrongAnswer");
-      }
-      if (url == '') {
-        document.getElementById("url").classList.add("wrongAnswer");
-      }
+    if (addWrongAnswer()) {
+      CardService.edit(card, card.id).then(() => {
+        window.location.reload();
+      })
+        .catch((error) => {
+          console.error("Erro na criação da carta:", error);
+        });
     }
   }
 
@@ -180,9 +131,9 @@ function EditCard() {
         <Row className="mb-3">
           <Form.Group as={Col}>
             <Form.Label>Fruit image url</Form.Label>
-            <Form.Control type="url" placeholder="url" id='url' name='url' onChange={editCard} value={card.url}/>
+            <Form.Control type="url" placeholder="url" id='url' name='url' onChange={editCard} value={card.url} />
           </Form.Group>
-        </Row>  
+        </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col}>

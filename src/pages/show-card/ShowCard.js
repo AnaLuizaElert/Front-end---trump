@@ -1,9 +1,9 @@
 //style
 import './ShowCard.css';
-import {Form} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 //react
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 //components
 import CardComponent from '../../components/card/Card';
@@ -30,7 +30,7 @@ function ShowCard() {
     if (selectedCardId) {
       CardService.showOne(selectedCardId)
         .then((response) => {
-          setCard(response.data);
+          setCard(response);
         })
         .catch((error) => {
           console.error(error);
@@ -40,13 +40,18 @@ function ShowCard() {
 
   return (
     <>
-    <NavBar/>
-    <Form className='container-content center-itens'>
-      <Form.Select value={card.id} aria-label="Default select example" className='select-card' id="form" onChange={(e) => setSelectedCardId(e.target.value)}>
-        <SelectCard />
-      </Form.Select>
-      <CardComponent id="card" card={card}/>
-    </Form>
+      <NavBar />
+      <Form className='container-content center-itens'>
+        <Form.Select
+          value={card.id}
+          aria-label="Default select example"
+          className='select-card'
+          id="form"
+          onChange={(e) => setSelectedCardId(e.target.value)}>
+          <SelectCard />
+        </Form.Select>
+        <CardComponent id="card" card={card} />
+      </Form>
     </>
   );
 }

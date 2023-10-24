@@ -4,7 +4,8 @@ const url = "http://localhost:8082/user"
 export const UserService = {
     create: async (user) => {
         try {
-            const response = await axios.post(url, user)
+            const response = await axios.post(url, user, 
+                {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -13,7 +14,8 @@ export const UserService = {
 
     edit: async (user, id) => {
         try {
-            const response = await axios.put(url + "/" + id, user)
+            const response = await axios.put(url + "/" + id, user, 
+            {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -22,7 +24,8 @@ export const UserService = {
 
     showOne: async (id) => {
         try {
-            const response = await axios.get(url + "/listOne/" + id)
+            const response = await axios.get(url + "/listOne/" + id, 
+            {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -31,7 +34,8 @@ export const UserService = {
 
     showOneByName: async (name) => {
         try {
-            const response = await axios.get(url + "/listOneByName/" + name)
+            const response = await axios.get(url + "/listOneByName/" + name, 
+            {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -40,7 +44,7 @@ export const UserService = {
 
     showAll: async () => {
         try {
-            const response = await axios.get(url)
+            const response = await axios.get(url, {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -49,7 +53,7 @@ export const UserService = {
     
     remove: async (id) => {
         try {
-            const response = await axios.delete(url + "/" + id)
+            const response = await axios.delete(url + "/" + id, {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);

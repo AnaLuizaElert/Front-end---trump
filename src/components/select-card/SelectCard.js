@@ -13,7 +13,7 @@ function SelectCard() {
 
     useEffect(() => {
         CardService.showAll().then(response => {
-            setCards(response.data)
+            setCards(response)
         }).catch(erro =>
             console.log(erro)
         )
@@ -21,7 +21,7 @@ function SelectCard() {
 
     return (
         <>
-            {list.map((item) => (
+            {list?.map((item) => (
                 <option value={item.id} key={v4()}>{item.name}</option>
             ))}
         </>

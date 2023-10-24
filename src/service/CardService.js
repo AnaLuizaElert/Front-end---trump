@@ -5,7 +5,9 @@ export const CardService = {
 
     create: async (card) => {
         try {
-            const response = await axios.post(url, card);
+            const response = await axios.post(url, card, {
+                withCredentials: true, 
+            });
             return response.data;
         } catch (error) {
             console.error(error);
@@ -14,7 +16,7 @@ export const CardService = {
 
     edit: async (card, id) => {
         try {
-            const response = await axios.put(url + "/edit/" + id, card)
+            const response = await axios.put(url + "/edit/" + id, card, {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -23,7 +25,7 @@ export const CardService = {
 
     showOne: async (id) => {
         try {
-            const response = await axios.get(url + "/listOne/" + id)
+            const response = await axios.get(url + "/listOne/" + id, {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -32,7 +34,7 @@ export const CardService = {
 
     showOneByName: async (name) => {
         try {
-            const response = await axios.get(url + "/listOneByName/" + name)
+            const response = await axios.get(url + "/listOneByName/" + name, {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -41,7 +43,9 @@ export const CardService = {
 
     showAll: async () => {
         try {
-            const response = await axios.get(url)
+            const response = await axios.get(url, {
+                withCredentials: true, 
+            })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -50,7 +54,9 @@ export const CardService = {
 
     page: async (page, size) => {
         try {
-            const response = await axios.get(url + "/page?page=" + page + "&size=" + size);
+            const response = await axios.get(
+                url + "/page?page=" + page + "&size=" + size, 
+                {withCredentials: true, });
             return response.data;
         } catch (error) {
             console.error(error);
@@ -59,7 +65,7 @@ export const CardService = {
 
     qtyCards: async () => {
         try {
-            const response = await axios.get(url + "/qtyCards")
+            const response = await axios.get(url + "/qtyCards", {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
@@ -68,7 +74,7 @@ export const CardService = {
 
     remove: async (id) => {
         try {
-            const response = await axios.delete(url + "/delete/" + id)
+            const response = await axios.delete(url + "/delete/" + id, {withCredentials: true, })
             return response.data;
         } catch (error) {
             console.error(error);
