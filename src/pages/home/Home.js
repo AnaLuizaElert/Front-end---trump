@@ -1,4 +1,7 @@
+//style
 import './Home.css';
+
+//components
 import NavBar from '../../components/nav-bar/Nav';
 
 function Home() {

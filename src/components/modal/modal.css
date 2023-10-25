@@ -1,0 +1,5 @@
+.modal-content {
+    min-width: 20rem !important;
+    min-height: 10rem !important;
+    width: fit-content !important;
+}

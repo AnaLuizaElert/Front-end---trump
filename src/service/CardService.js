@@ -32,6 +32,15 @@ export const CardService = {
         }
     },
 
+    showFirstOne: async () => {
+        try {
+            const response = await axios.get(url + "/listFirstOne", {withCredentials: true, })
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    },
+
     showOneByName: async (name) => {
         try {
             const response = await axios.get(url + "/listOneByName/" + name, {withCredentials: true, })

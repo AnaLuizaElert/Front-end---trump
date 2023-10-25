@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 //service
 import { UserService } from "../../service/UserService.js";
+import { addWrongAnswer, removeWrongAnswer } from '../../utils/statusAnswer.js';
 
 function RegisterPerson() {
 
@@ -18,25 +19,14 @@ function RegisterPerson() {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
 
+  const arrayIds = ["name", "password", "verifyPassword"]
+
   function register(event) {
     event.preventDefault();
-    let name = document.getElementById("name").value;
-    let pass = document.getElementById("password").value;
-    let verPass = document.getElementById("verifyPassword").value;
+    removeWrongAnswer(arrayIds);
 
-    if (document.getElementById("name").classList.contains("wrongAnswer")) {
-      document.getElementById("name").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("password").classList.contains("wrongAnswer")) {
-      document.getElementById("password").classList.remove("wrongAnswer");
-    }
-    if (document.getElementById("verifyPassword").classList.contains("wrongAnswer")) {
-      document.getElementById("verifyPassword").classList.remove("wrongAnswer");
-    }
-
-    if (name && pass && verPass) {
-      if (pass === verPass) {
-
+    if (addWrongAnswer(arrayIds)) {
+      // if (pass === verPass) {
         UserService.create(user)
           .then(() => {
             window.location.href = '/';
@@ -44,22 +34,7 @@ function RegisterPerson() {
           .catch((error) => {
             console.error("Erro na criação do usuário:", error);
           });
-
-      } else {
-        alert("Senhas diferentes!");
-        document.getElementById("password").classList.add("wrongAnswer");
-        document.getElementById("verifyPassword").classList.add("wrongAnswer");
-      }
-    } else {
-      if (name == '') {
-        document.getElementById("name").classList.add("wrongAnswer");
-      }
-      if (pass == '') {
-        document.getElementById("password").classList.add("wrongAnswer");
-      }
-      if (verPass == '') {
-        document.getElementById("verifyPassword").classList.add("wrongAnswer");
-      }
+      // }
     }
   }
 

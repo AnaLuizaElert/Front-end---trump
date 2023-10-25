@@ -24,11 +24,10 @@ function ShowCards() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         const qtyCards = await CardService.qtyCards();
         const response = await CardService.page(active, 9);
         setCards(response.content);
-        console.log(qtyCards)
 
         let number = Math.floor(qtyCards / 9);
         const newItems = [];
@@ -40,7 +39,7 @@ function ShowCards() {
           );
         }
         setItems(newItems);
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }

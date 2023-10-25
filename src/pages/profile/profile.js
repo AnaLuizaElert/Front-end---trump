@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
+//style
+import './profile.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
+//react
+import React, { useEffect, useState } from 'react';
+
+//components
 import NavBar from '../../components/nav-bar/Nav';
+
+//service
 import { UserService } from '../../service/UserService';
-import './profile.css';
 
 function Profile() {
   const [userName, setUserName] = useState('');

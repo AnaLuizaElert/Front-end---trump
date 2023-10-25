@@ -11,7 +11,6 @@ import NavBar from '../../components/nav-bar/Nav';
 //service
 import { UserService } from '../../service/UserService.js';
 
-
 function DeletePerson() {
   const [isSwitchSelected, setIsSwitchSelected] = useState(false);
 

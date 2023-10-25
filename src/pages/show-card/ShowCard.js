@@ -24,11 +24,11 @@ function ShowCard() {
     "url": ""
   });
 
-  const [selectedCardId, setSelectedCardId] = useState(null);
+  const [cardId, setCardId] = useState(null);
 
   useEffect(() => {
-    if (selectedCardId) {
-      CardService.showOne(selectedCardId)
+    if (cardId) {
+      CardService.showOne(cardId)
         .then((response) => {
           setCard(response);
         })
@@ -36,7 +36,17 @@ function ShowCard() {
           console.error(error);
         });
     }
-  }, [selectedCardId]);
+  }, [cardId]);
+
+  useEffect(() => {
+    CardService.showFirstOne()
+      .then((response) => {
+        setCardId(response.id);
+      })
+      .catch(() => {
+        alert("Erro");
+      });
+  }, [])
 
   return (
     <>
@@ -47,7 +57,7 @@ function ShowCard() {
           aria-label="Default select example"
           className='select-card'
           id="form"
-          onChange={(e) => setSelectedCardId(e.target.value)}>
+          onChange={(e) => setCardId(e.target.value)}>
           <SelectCard />
         </Form.Select>
         <CardComponent id="card" card={card} />

@@ -1,78 +1,65 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
+//style
 import './EditPerson.css';
+import { Button, Col, Form, Row } from 'react-bootstrap';
+
+//react
 import React, { useEffect, useState } from 'react';
+
+//components
 import NavBar from '../../components/nav-bar/Nav';
+
+//service
 import { UserService } from '../../service/UserService';
 
-function EditPerson() {
-  const actualUser = UserService.showOneByName(localStorage.getItem('user'));
+//utils
+import { addWrongAnswer, addWrongAnswerLogin, removeWrongAnswer } from '../../utils/statusAnswer';
 
+function EditPerson() {
   const [user, setUser] = useState({
     name: localStorage.getItem('user'),
-    password: ''
+    password: '',
+    currentPassword: ''
   });
 
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [verPassword, setVerPassword] = useState("");
 
-  useEffect(() => {
-    if (selectedUserId) {
-      UserService.showOne(selectedUserId)
-        .then((response) => {
-          setUser(response);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [selectedUserId]);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const arrayIds = ["name", "password", "verifyPassword", "actualPassword"]
 
   const editUser = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
+  useEffect(() => {
+    UserService.showOneByName(localStorage.getItem('user'))
+      .then((response) => {
+        setSelectedUserId(response.id);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [selectedUserId]);
+
+  const handleVerPasswordChange = (event) => {
+    setVerPassword(event.target.value);
+  };
+
   function register(event) {
     event.preventDefault();
-    const name = document.getElementById('name').value;
-    const pass = document.getElementById('password').value;
-    const verPas = document.getElementById('verifyPassword').value;
-    const acPas = document.getElementById('actualPassword').value;
 
-    const nameInput = document.getElementById('name');
-    const passInput = document.getElementById('password');
-    const verPasInput = document.getElementById('verifyPassword');
-    const acPasInput = document.getElementById('actualPassword');
+    removeWrongAnswer(arrayIds);
 
-    nameInput.classList.remove('wrongAnswer');
-    passInput.classList.remove('wrongAnswer');
-    verPasInput.classList.remove('wrongAnswer');
-    acPasInput.classList.remove('wrongAnswer');
-
-    if (name !== '' && pass !== '' && verPas !== '' && acPas !== '') {
-      if (pass === verPas) {
-        UserService.edit(user, user.id)
+    if (addWrongAnswer(arrayIds)) {
+      if (user.password === verPassword) {
+        UserService.edit(user, selectedUserId)
           .then(() => {
-            window.location.reload();
+            // window.location.reload();
           })
           .catch((error) => {
             console.error('Erro na edição do usuário:', error);
           });
       } else {
-        alert('Senha incorreta!');
-        acPasInput.classList.add('wrongAnswer');
-      }
-    } else {
-      alert('Preencha todos os campos!');
-      if (name === '') {
-        nameInput.classList.add('wrongAnswer');
-      }
-      if (pass === '') {
-        passInput.classList.add('wrongAnswer');
-      }
-      if (verPas === '') {
-        verPasInput.classList.add('wrongAnswer');
-      }
-      if (acPas === '') {
-        acPasInput.classList.add('wrongAnswer');
+        addWrongAnswerLogin(['password']);
       }
     }
   }
@@ -89,8 +76,15 @@ function EditPerson() {
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col}>
-            <Form.Label>Put your actual password</Form.Label>
-            <Form.Control type="password" placeholder="Actual password" id="actualPassword" />
+            <Form.Label>Put your current password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Current password"
+              id="actualPassword" 
+              name="currentPassword"
+              onChange={editUser}
+              value={user.currentPassword}
+              />
           </Form.Group>
         </Row>
         <Row className="mb-3">
@@ -109,7 +103,13 @@ function EditPerson() {
         <Row className="mb-3">
           <Form.Group as={Col}>
             <Form.Label>Confirm your new password</Form.Label>
-            <Form.Control type="password" placeholder="Password" id="verifyPassword" />
+            <Form.Control
+              type="password"
+              value={verPassword}
+              placeholder="Password"
+              id="verifyPassword"
+              onChange={handleVerPasswordChange}
+            />
           </Form.Group>
         </Row>
 

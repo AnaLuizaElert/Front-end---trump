@@ -10,6 +10,9 @@ import NavBar from '../../components/nav-bar/Nav';
 //service
 import { CardService } from '../../service/CardService';
 
+//utils
+import { addWrongAnswer, removeWrongAnswer } from '../../utils/statusAnswer';
+
 function RegisterCard() {
 
   const [card, setCard] = useState({
@@ -51,32 +54,11 @@ function RegisterCard() {
     return qtyCalories;
   }
 
-  function removeWrongAnswer() {
-    for (let id of arrayIds) {
-      const element = document.getElementById(id);
-      if (element?.classList.contains("wrongAnswer")) {
-        element.classList.remove("wrongAnswer");
-      }
-    }
-  }
-
-  function addWrongAnswer() {
-    let isFull = true;
-    for (let id of arrayIds) {
-      const element = document.getElementById(id);
-      if (element?.value === '') {
-        element.classList.add("wrongAnswer");
-        isFull = false;
-      }
-    }
-    return isFull;
-  }
-
   function register(event) {
     event.preventDefault();
-    removeWrongAnswer();
+    removeWrongAnswer(arrayIds);
 
-    if (addWrongAnswer()) {
+    if (addWrongAnswer(arrayIds)) {
       CardService.create(card)
         .then(() => {
           window.location.reload();
@@ -86,7 +68,6 @@ function RegisterCard() {
         });
     }
   }
-
 
   return (
     <>

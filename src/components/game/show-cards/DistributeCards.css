@@ -1,11 +1,14 @@
-.game{
+#game{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem;
+    height: 100%;
     width: 100%;
 }
 
-#simple-background-game{
+.simple-background-game{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,112 +22,45 @@
     top: 0;
 }
 
-/*Commom*/
-.border-colorful{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgb(5,37,2);
-    background: linear-gradient(90deg, rgba(5,37,2,1) 0%, rgba(11,121,9,1) 35%, rgba(168,249,66,1) 100%);
-    border-radius: 5px;
-    position: fixed;
-}
-
 /*Cards*/
-
-/*Commom*/
-.row-distribute{
+.cardSide{
     display: flex;
     flex-direction: column;
-    height: 80vh;
-    width: 50vw;
-}
-
-.cards-number{
-    padding: 0.5% 2%;
-    width: auto;
-    background-color: aliceblue;
-    border-radius: 5px;
-    position: fixed;
-}
-
-.main-card{
-    position: fixed;
-    bottom: 0rem;
-}
-
-/*oponent card*/
-
-.top{
-    position: fixed;
-    top: 2rem;
-    height: 10rem;
-    width: 9rem;
-}
-
-.first-row{
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
+    justify-content: space-between;
     align-items: center;
-    justify-content: start;
+    height: 80%;
 }
 
-.first-row p{
-    top: 2.8rem;
-    left: 45rem;
+.card{
+    margin-bottom: 1rem;
+    height: 18rem;
 }
 
-
-/*my card*/
-
-.bottom{
-    bottom: 1rem;
-    height: 15rem;
-    width: 13.5rem;
-}
-
-.second-row{
+.battle{
     display: flex;
-    width: 100vw;
+    flex-direction: column;
+    height: 100%;
     align-items: center;
-    justify-content: end;
 }
 
-.second-row p{
-    bottom: 2.8rem;
-    margin-left: 6rem;
+.buttonGiveUp{
+    top: 0px;
+    background-color: antiquewhite;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    border: 0px;
 }
 
-/*Give up*/
-
-
-.border-give-up{
-    width: 7rem;
-    height: 3.5rem;
-    top: 2rem;
-    left: 2rem;
-}
-
-.button-give-up{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
+.sideIdentity{
+    background-color: antiquewhite;
     padding: 1rem;
-    border-radius: 5px;
-    min-width: 6.5rem;
-    height: 3rem;
-    top: 2rem;
-    left: 2rem;
-    color: aliceblue;
-    text-decoration: none;
-    font-weight: 200;
-    font-size: 1.2rem;
-    background-color: rgb(48, 90, 32);
+    border-radius: 1rem;
 }
 
-.button-give-up:hover{
-    color: aliceblue;
-    background-color: rgb(74, 117, 57);
+.cardQty{
+    background-color: antiquewhite;
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 15rem;
+    height: auto;
 }

@@ -25,4 +25,16 @@ p{
     height: 8rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    border-top-color: blue;
+}
+
+.card-title{
+    max-width: fit-content;
+    padding: 0.5rem 1rem;
+    border-radius: 20px; 
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card-body{
+    padding: 0.8rem !important;
 }
