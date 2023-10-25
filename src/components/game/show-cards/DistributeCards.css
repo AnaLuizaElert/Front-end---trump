@@ -29,6 +29,7 @@
     justify-content: space-between;
     align-items: center;
     height: 80%;
+    width: 25%;
 }
 
 .card{
@@ -43,14 +44,6 @@
     align-items: center;
 }
 
-.buttonGiveUp{
-    top: 0px;
-    background-color: antiquewhite;
-    padding: 0.5rem 2rem;
-    border-radius: 1rem;
-    border: 0px;
-}
-
 .sideIdentity{
     background-color: antiquewhite;
     padding: 1rem;
@@ -58,9 +51,49 @@
 }
 
 .cardQty{
-    background-color: antiquewhite;
+    background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 4rem;
+    border: 2px solid white;
     padding: 1rem;
-    border-radius: 1rem;
     max-width: 15rem;
-    height: auto;
+    min-width: 15rem;
+    text-align: center;
 }
+
+.player-title{
+    height: 3rem;
+    border-radius: 4rem;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.322);
+}
+
+.buttonGiveUp {
+    top: 0px;
+    padding: 10px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4rem;
+    display: block;
+    border: 0px;
+    font-weight: 600;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .buttonGiveUp:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .buttonGiveUp:active {
+    transform: scale(0.80);
+  }
+

@@ -1,12 +1,11 @@
 import Modal from 'react-bootstrap/Modal';
 
-const ModalWhoPlays = ({ isPlayer, numRound, openModalPlayerRound, closeModalPlayerRound }) => {
+const ModalWhoPlays = ({ isPlayer, numRound, setModalPlayerRound }) => {
     return (
-        <Modal show={openModalPlayerRound}
-            onHide={closeModalPlayerRound}
+        <Modal show={setModalPlayerRound}
+            onHide={setModalPlayerRound}
             size="sm"
             aria-labelledby="contained-modal-title-vcenter"
-            className='modal'
             centered>
             <Modal.Header>
                 <Modal.Title id="contained-modal-title-vcenter">
