@@ -18,6 +18,8 @@ import ModalWinner from '../../modal/ModalWinner';
 
 //services
 import { CardService } from '../../../service/CardService';
+import { UserService } from '../../../service/UserService';
+import { toast } from 'react-toastify';
 
 function DistributeCards() {
   const navigate = useNavigate()
@@ -50,6 +52,7 @@ function DistributeCards() {
   const [chosenAttribute, setChosenAttribute] = useState(null);
   const [roundWinner, setRoundWinner] = useState(null);
   const [hasWinner, setHasWinner] = useState(false);
+  const [playerUpdate, setPlayerUpdate] = useState({});
 
   const setModalPlayerRound = () => {
     setModalPlayerRoundOpen(!modalPlayerRoundOpen);
@@ -73,11 +76,21 @@ function DistributeCards() {
   function chooseAtributeComputer() {
     setTimeout(() => {
       let attributes = ["qtyCalories", "qtyGlucose", "qtyProteins", "ranking"];
-      attributes.sort(() => Math.random() - 0.5);
-      console.log("chosenAttribute computer: " + attributes[0]);
+      randomArray(attributes);
       setChosenAttribute(attributes[0]);
     }, 3000)
   };
+
+  // Lógica da desistencia
+  function giveUp() {
+    updateUser();
+    navigate("/profile");
+  }
+
+  // Misturar um array
+  function randomArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
 
   // Distribui as cartas para os jogadores de forma randomica
   async function distributeCards() {
@@ -85,7 +98,7 @@ function DistributeCards() {
     allCards = await CardService.showAll();
     allCards = allCards.slice(0, 6);
     let cardQty = allCards.length;
-    allCards.sort(() => Math.random() - 0.5);
+    randomArray(allCards);
     if (cardQty % 2 != 0) {
       allCards.pop();
     }
@@ -93,9 +106,28 @@ function DistributeCards() {
     setComputerCards(allCards.slice(cardQty / 2, cardQty));
   }
 
-  // Lidar com a lógica de temporização
-  async function delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  // Editar o usuário
+  async function updateUser() {
+    try {
+      const user = await UserService.showOne(localStorage.getItem("user"));
+      let editedUser;
+      if (computerCards.length === 0) {
+        editedUser = {
+          "points": (parseInt(user.points) + 2),
+          "qtyLosses": user.qtyLosses,
+          "qtyVictories": (parseInt(user.qtyVictories) + 1)
+        }
+      } else {
+        editedUser = {
+          "points": user.points,
+          "qtyLosses": (parseInt(user.qtyLosses) + 1),
+          "qtyVictories": user.qtyVictories
+        }
+      }
+      UserService.editBySytem(editedUser);
+    } catch (error) {
+      toast.error(error);
+    }
   }
 
   function playRound() {
@@ -135,44 +167,52 @@ function DistributeCards() {
   }, [computerCards, playerCards]);
 
   useEffect(() => {
-    if (chosenAttribute) {
-      setNumRound(numRound + 1);
-      console.log("numRound: " + numRound);
+    setNumRound(numRound + 1);
+    console.log("numRound: " + numRound);
 
-      const playerValue = parseFloat(playerFirstCard[chosenAttribute]);
-      const computerValue = parseFloat(computerFirstCard[chosenAttribute]);
-      console.log("player chosenAttribute: " + playerValue);
-      console.log("computer chosenAttribute: " + computerValue);
-      console.log("player: ");
-      console.log(playerFirstCard);
-      console.log("computer: ");
-      console.log(computerFirstCard);
-      let cardWithdrawn = {};
+    const playerValue = parseFloat(playerFirstCard[chosenAttribute]);
+    const computerValue = parseFloat(computerFirstCard[chosenAttribute]);
 
-      if (playerValue > computerValue) {
-        setRoundWinner("player");
-        console.log("roundWinner: player");
-        cardWithdrawn = computerCards.shift();
-        playerCards.push(cardWithdrawn);
-      } else {
-        setRoundWinner("computer");
-        console.log("roundWinner: computer");
-        cardWithdrawn = playerCards.shift();
-        computerCards.push(cardWithdrawn);
-      }
+    console.log("player chosenAttribute: " + playerValue);
+    console.log("computer chosenAttribute: " + computerValue);
+    console.log("player: ");
+    console.log(playerFirstCard);
+    console.log("computer: ");
+    console.log(computerFirstCard);
 
-      setModalWinnerOpen(true);
-      setTimeout(() => {
-        setModalWinnerOpen(false);
-        setIsPlayer(!isPlayer);
-        if (playerCards.length === 0 && computerCards.length === 0) {
-          setHasWinner(true);
-          navigate("/profile");
-        }
-      }, 5000);
+    let cardWithdrawn = {};
 
-      playRound();
+    if (playerValue > computerValue) {
+      setRoundWinner("player");
+      console.log("roundWinner: player");
+      cardWithdrawn = computerCards.shift();
+      playerCards.push(cardWithdrawn);
+    } else {
+      setRoundWinner("computer");
+      console.log("roundWinner: computer");
+      cardWithdrawn = playerCards.shift();
+      computerCards.push(cardWithdrawn);
     }
+
+    randomArray(playerCards);
+    randomArray(computerCards);
+    console.log("playerCards");
+    console.log(playerCards);
+    console.log("computerCards");
+    console.log(computerCards);
+
+    setModalWinnerOpen(true);
+    setTimeout(() => {
+      setModalWinnerOpen(false);
+      setIsPlayer(!isPlayer);
+      if (playerCards.length === 0 || computerCards.length === 0) {
+        setHasWinner(true);
+        updateUser();
+        navigate("/profile");
+      }
+    }, 5000);
+
+    playRound();
   }, [chosenAttribute]);
 
   return (
@@ -180,12 +220,12 @@ function DistributeCards() {
       <div className='mySide cardSide'>
         <img src={You} className='player-title' />
         {playerFirstCard &&
-          <CardComponent id="card" card={playerFirstCard} />
+          <CardComponent id="card" cardProps={playerFirstCard} />
         }
         <p className='cardQty button-85'>Cards quantity: {playerCards.length}</p>
       </div>
       <div className='battle'>
-        <button className='buttonGiveUp' onClick={() => navigate("/home")}>Give up</button>
+        <button className='buttonGiveUp' onClick={() => giveUp}>Give up</button>
       </div>
       <div className='enemySide cardSide'>
         <img src={Computer} className='player-title' />
@@ -193,7 +233,7 @@ function DistributeCards() {
           <img src={BackCard} className='card' />
         }
         {computerFirstCard && !isPlayer &&
-          <CardComponent id="card" card={computerFirstCard} />
+          <CardComponent id="card" cardProps={computerFirstCard} />
         }
         <p className='cardQty button-85'>Cards quantity: {computerCards.length}</p>
       </div>

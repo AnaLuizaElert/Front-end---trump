@@ -22,6 +22,16 @@ export const UserService = {
         }
     },
 
+    editBySytem: async (user, id) => {
+        try {
+            const response = await axios.put(url + "/editBySytem/" + id, user, 
+            {withCredentials: true, })
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    },
+
     showOne: async (id) => {
         try {
             const response = await axios.get(url + "/listOne/" + id, 

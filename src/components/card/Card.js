@@ -1,7 +1,16 @@
 import { Card, ListGroup } from 'react-bootstrap';
 import './Card.css';
+import { useEffect, useState } from 'react';
 
-const CardComponent = ({ card }) => {
+const CardComponent = ({ cardProps }) => {
+
+  const [card, setCard] = useState(cardProps);
+
+  useEffect(() => {
+    setCard(cardProps);
+  }, [card])
+
+
   return (
     <Card style={{ width: '18rem' }} className="item-card">
       <div className='item-img' style={{ backgroundImage: `url(${card.url})` }}>
