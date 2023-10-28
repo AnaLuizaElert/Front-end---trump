@@ -16,9 +16,9 @@ import EditPerson from './pages/edit-person/EditPerson';
 import DeleteCard from "./pages/delete-card/DeleteCard";
 import DeletePerson from "./pages/delete-person/DeletePerson";
 
-import FirstPage from "./components/game/first-page/FirstPage";
+import FirstPage from "./pages/game/first-page/FirstPage";
 import Profile from "./pages/profile/profile";
-import DistributeCards from "./components/game/show-cards/DistributeCards";
+import GameRule from './pages/game/gameRule/GameRule';
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
         <Route path="/show-card" element={<ShowCard/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/game-first-page" element={<FirstPage/>}/>
-        <Route path="/game-distribute-cards" element={<DistributeCards/>}/>
+        <Route path="/game/:level" element={<GameRule/>}/>
       </Routes>
     </BrowserRouter>
   );

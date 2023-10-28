@@ -1,4 +1,4 @@
-#game{
+#game {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -8,7 +8,7 @@
     width: 100%;
 }
 
-.simple-background-game{
+.simple-background-game {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@
 }
 
 /*Cards*/
-.cardSide{
+.cardSide {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -32,25 +32,27 @@
     width: 25%;
 }
 
-.card{
+.card {
     margin-bottom: 1rem;
     height: 18rem;
+    background-color: transparent;
+    border: none;
 }
 
-.battle{
+.battle {
     display: flex;
     flex-direction: column;
     height: 100%;
     align-items: center;
 }
 
-.sideIdentity{
+.sideIdentity {
     background-color: antiquewhite;
     padding: 1rem;
     border-radius: 1rem;
 }
 
-.cardQty{
+.cardQty {
     background-color: rgba(255, 255, 255, 0.322);
     border-radius: 4rem;
     border: 2px solid white;
@@ -60,7 +62,7 @@
     text-align: center;
 }
 
-.player-title{
+.player-title {
     height: 3rem;
     border-radius: 4rem;
     border: 2px solid white;
@@ -68,32 +70,5 @@
 }
 
 .buttonGiveUp {
-    top: 0px;
-    padding: 10px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
     border-radius: 4rem;
-    display: block;
-    border: 0px;
-    font-weight: 600;
-    box-shadow: 0px 0px 14px -7px #f09819;
-    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .buttonGiveUp:hover {
-    background-position: right center;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .buttonGiveUp:active {
-    transform: scale(0.80);
-  }
-
+}

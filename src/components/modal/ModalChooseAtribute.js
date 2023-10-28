@@ -1,4 +1,6 @@
-import "./modal.css"
+import "./modal.css";
+import '../../utils/ButtonGame.css';
+
 import Modal from 'react-bootstrap/Modal';
 
 const ModalChooseAtribute = ({ setModalChooseAtribute, chooseAtribute }) => {
@@ -9,33 +11,35 @@ const ModalChooseAtribute = ({ setModalChooseAtribute, chooseAtribute }) => {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             contentClassName="modal"
+            backdrop="static"
+            keyboard={false}
             centered>
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Choose an attribute to dispute
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="modal-body">
                 <button
-                    className="choose-attribute"
+                    className="choose-attribute buttonGame"
                     onClick={() => chooseAtribute("qtyProteins")}>
                     Qty proteins
                 </button>
 
                 <button
-                    className="choose-attribute"
+                    className="choose-attribute buttonGame"
                     onClick={() => chooseAtribute("qtyCalories")}>
                     Qty calories
                 </button>
 
                 <button
-                    className="choose-attribute"
+                    className="choose-attribute buttonGame"
                     onClick={() => chooseAtribute("qtyGlucose")}>
                     Glycemic index
                 </button>
 
                 <button
-                    className="choose-attribute"
+                    className="choose-attribute buttonGame"
                     onClick={() => chooseAtribute("ranking")}>
                     Ranking
                 </button>

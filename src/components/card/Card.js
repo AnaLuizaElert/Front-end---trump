@@ -1,15 +1,7 @@
 import { Card, ListGroup } from 'react-bootstrap';
 import './Card.css';
-import { useEffect, useState } from 'react';
 
-const CardComponent = ({ cardProps }) => {
-
-  const [card, setCard] = useState(cardProps);
-
-  useEffect(() => {
-    setCard(cardProps);
-  }, [card])
-
+const CardComponent = ({ card }) => {
 
   return (
     <Card style={{ width: '18rem' }} className="item-card">

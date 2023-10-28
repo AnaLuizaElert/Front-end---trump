@@ -23,7 +23,7 @@ function Profile() {
     UserService.showOneByName(localStorage.getItem('user'))
       .then((response) => {
         setUserName(response.name);
-        setVictoryQty(response.qtyVitories);
+        setVictoryQty(response.qtyVictories);
         setLossesQty(response.qtyLosses);
         setPoints(response.points);
       })

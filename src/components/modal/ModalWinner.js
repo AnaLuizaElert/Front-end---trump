@@ -1,7 +1,8 @@
 import Modal from 'react-bootstrap/Modal';
 import confetti from "https://esm.run/canvas-confetti@1";
+import '../../utils/ButtonGame.css';
 
-const ModalWinner = ({ roundWinner, gameOver, setModalWinner }) => {
+const ModalWinner = ({ roundWinner, gameOver, setModalWinner, playRound, chosenAttribute, computerFirstCard, playerFirstCard }) => {
 
     function returnText() {
         if (roundWinner === "player") {
@@ -23,6 +24,13 @@ const ModalWinner = ({ roundWinner, gameOver, setModalWinner }) => {
         }
     }
 
+    function returnFeedback() {
+        return (
+            `Chosen attribute: ${chosenAttribute.attribute}
+            Computer attribute: ${playerFirstCard[chosenAttribute.attribute]}
+            Player attribute: ${computerFirstCard[chosenAttribute.attribute]} `)
+    }
+
     return (
         <Modal show={setModalWinner}
             onHide={setModalWinner}
@@ -31,6 +39,10 @@ const ModalWinner = ({ roundWinner, gameOver, setModalWinner }) => {
             centered>
             <Modal.Body>
                 <h4 className='text-winner'>{returnText()}</h4>
+                <p>{returnFeedback()}</p>
+                {!gameOver &&
+                    <button onClick={playRound} className='nextRound buttonGame'>Next Round</button>
+                }
             </Modal.Body>
         </Modal>
     )

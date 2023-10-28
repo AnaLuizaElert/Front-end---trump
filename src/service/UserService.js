@@ -22,7 +22,7 @@ export const UserService = {
         }
     },
 
-    editBySytem: async (user, id) => {
+    editBySytem: async (id, user) => {
         try {
             const response = await axios.put(url + "/editBySytem/" + id, user, 
             {withCredentials: true, })

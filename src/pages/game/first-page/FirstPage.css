@@ -19,6 +19,12 @@
     align-items: center;
 }
 
-#button-start-game{
+.levels-game{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; 
+}
+
+.button-start-game{
     margin-top: 2rem;
 }

@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 
-const ModalWhoPlays = ({ isPlayer, numRound, setModalPlayerRound }) => {
+const ModalWhoPlays = ({ numRound, setModalPlayerRound }) => {
     return (
         <Modal show={setModalPlayerRound}
             onHide={setModalPlayerRound}
@@ -13,7 +13,7 @@ const ModalWhoPlays = ({ isPlayer, numRound, setModalPlayerRound }) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>{isPlayer ? "Your turn" : "Computer turn"}</h4>
+                <h4>{numRound % 2 != 0? "Your turn" : "Computer turn"}</h4>
             </Modal.Body>
         </Modal>
     )
