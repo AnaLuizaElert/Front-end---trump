@@ -38,7 +38,7 @@ function Profile() {
         <div className="profile-box profile-left-box">
           <div className="profile-box-name">
             <p class="profile-item-name profile-text profile-card-shadow">
-              Ana Luiza Elert
+              {userName}
             </p>
             <div class="profile-item-fruit">
               <div class="profile-pear"></div>
@@ -73,25 +73,6 @@ function Profile() {
           </div>
         </div>
       </div>
-
-      {/* <Container className='container-content'>
-        <Row>
-          <Col className='name'>Name</Col>
-          <Col className='ActName'>{userName}</Col>
-        </Row>
-        <Row>
-          <Col className='victory quantity'>Victory quantity</Col>
-          <Col className='ActVictoryQty'>{victoryQty}</Col>
-        </Row>
-        <Row>
-          <Col className='losses quantity'>Losses quantity</Col>
-          <Col className='ActLossesQty'>{lossesQty}</Col>
-        </Row>
-        <Row>
-          <Col className='points'>Points</Col>
-          <Col className='ActPoints'>{points}</Col>
-        </Row>
-      </Container> */}
     </>
   );
 }
