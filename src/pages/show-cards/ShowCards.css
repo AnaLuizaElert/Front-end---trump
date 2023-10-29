@@ -1,13 +1,13 @@
-.show-all-cards-container{
-    margin-left: 8.5rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.show-all-cards-container {
+  margin-left: 8.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.pagination{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container-pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

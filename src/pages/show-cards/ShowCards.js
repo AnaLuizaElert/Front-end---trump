@@ -1,19 +1,19 @@
 //style
-import './ShowCards.css';
-import Pagination from 'react-bootstrap/Pagination';
+import "./ShowCards.css";
+import Pagination from "react-bootstrap/Pagination";
 
 //react
 import { useEffect, useState } from "react";
 
 //component
 import CardComponent from "../../components/card/Card";
-import NavBar from '../../components/nav-bar/Nav';
+import NavBar from "../../components/nav-bar/Nav";
 
 //service
 import { CardService } from "../../service/CardService";
 
 //external
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function ShowCards() {
   const [cards, setCards] = useState([]);
@@ -24,7 +24,7 @@ function ShowCards() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
         const qtyCards = await CardService.qtyCards();
         const response = await CardService.page(active, 9);
         setCards(response.content);
@@ -33,7 +33,11 @@ function ShowCards() {
         const newItems = [];
         for (let i = 0; i <= number; i++) {
           newItems.push(
-            <Pagination.Item key={uuidv4()} active={i === active} onClick={() => setActive(i)}>
+            <Pagination.Item
+              key={uuidv4()}
+              active={i === active}
+              onClick={() => setActive(i)}
+            >
               {i + 1}
             </Pagination.Item>
           );
@@ -64,7 +68,7 @@ function ShowCards() {
           ) : (
             <div>Nenhum card encontrado</div>
           )}
-          <div className="pagination">
+          <div className="container-pagination">
             <Pagination>{items}</Pagination>
           </div>
         </>

@@ -1,37 +1,42 @@
 //style
-import './EditPerson.css';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import "./EditPerson.css";
+import "../../utils/ButtonGame.css";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 //react
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 //components
-import NavBar from '../../components/nav-bar/Nav';
+import NavBar from "../../components/nav-bar/Nav";
 
 //service
-import { UserService } from '../../service/UserService';
+import { UserService } from "../../service/UserService";
 
 //utils
-import { addWrongAnswer, addWrongAnswerLogin, removeWrongAnswer } from '../../utils/statusAnswer';
+import {
+  addWrongAnswer,
+  addWrongAnswerLogin,
+  removeWrongAnswer,
+} from "../../utils/statusAnswer";
 
 function EditPerson() {
   const [user, setUser] = useState({
-    name: localStorage.getItem('user'),
-    password: '',
-    currentPassword: ''
+    name: localStorage.getItem("user"),
+    password: "",
+    currentPassword: "",
   });
 
   const [verPassword, setVerPassword] = useState("");
 
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const arrayIds = ["name", "password", "verifyPassword", "actualPassword"]
+  const arrayIds = ["name", "password", "verify-password", "actual-password"];
 
   const editUser = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
   useEffect(() => {
-    UserService.showOneByName(localStorage.getItem('user'))
+    UserService.showOneByName(localStorage.getItem("user"))
       .then((response) => {
         setSelectedUserId(response.id);
       })
@@ -56,10 +61,10 @@ function EditPerson() {
             // window.location.reload();
           })
           .catch((error) => {
-            console.error('Erro na edição do usuário:', error);
+            console.error("Erro na edição do usuário:", error);
           });
       } else {
-        addWrongAnswerLogin(['password']);
+        addWrongAnswerLogin(["password"]);
       }
     }
   }
@@ -71,7 +76,14 @@ function EditPerson() {
         <Row className="mb-3">
           <Form.Group>
             <Form.Label>Nickname</Form.Label>
-            <Form.Control type="text" id="name" name="name" value={user.name} readOnly />
+            <Form.Control
+              type="text"
+              id="name"
+              name="name"
+              value={user.name}
+              readOnly
+              disabled
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
@@ -80,11 +92,11 @@ function EditPerson() {
             <Form.Control
               type="password"
               placeholder="Current password"
-              id="actualPassword" 
+              id="actual-password"
               name="currentPassword"
               onChange={editUser}
               value={user.currentPassword}
-              />
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
@@ -107,13 +119,17 @@ function EditPerson() {
               type="password"
               value={verPassword}
               placeholder="Password"
-              id="verifyPassword"
+              id="verify-password"
               onChange={handleVerPasswordChange}
             />
           </Form.Group>
         </Row>
-
-        <Button variant="primary" type="submit" onClick={register}>
+        <Button
+          variant="primary"
+          type="submit"
+          className="button-game button-submit"
+          onClick={register}
+        >
           Submit
         </Button>
       </Form>

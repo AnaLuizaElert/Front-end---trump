@@ -1,17 +1,44 @@
-.container-content-navbar{
-    height: 5rem;
-    background-color: rgba(3, 37, 0, 0.281) !important;
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    top: 0;
+.container-content-navbar {
+  height: 6rem;
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0rem 1.5rem;
+  left: 5%;
+  box-shadow: rgba(99, 99, 99, 0.377) 0px 2px 8px 0px;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  background-color: transparent !important;
+  position: fixed;
+  z-index: 10;
+  top: 0;
 }
 
-.container-itens-navbar{
-    width: 100%;
-    font-size: larger;
+.nav-link {
+  font-family: Georgia;
+  color: white !important;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+}
+
+.navbar-brand {
+  font-family: Fruta;
+  color: white !important;
+  font-size: 1.5rem;
+}
+
+.dropdown-menu {
+  border: none;
+  background-color: #9cd3e1;
+  box-shadow: rgba(99, 99, 99, 0.377) 0px 2px 8px 0px;
+  padding-bottom: 0px;
+}
+
+.dropdown-item:hover {
+  background-color: transparent;
 }
 
 .dropdown-divider {
-    border: 1px solid rgb(228, 206, 7) !important;
+  height: 0;
+  border: none !important;
 }

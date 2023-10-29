@@ -1,45 +1,55 @@
 @font-face {
   font-family: Fruta;
-  src: url('./fonts/Blueberry\ .ttf');
+  src: url("./fonts/Blueberry\ .ttf");
 }
 
-body{
+* {
+  font-family: Georgia;
+  color: white;
+  font-size: 1rem;
+}
+
+.form-select * {
+  color: #000;
+}
+
+body {
   background-image: url("./img/Background.png");
   background-color: aliceblue;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   padding-top: 6rem;
 }
 
 .container-content {
   margin: auto;
-  width: 70%;
-  background-color: rgba(0, 0, 0, 0.116);
+  margin-top: 4rem;
+  box-shadow: rgba(99, 99, 99, 0.377) 0px 2px 8px 0px;
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  width: 60%;
   padding: 4%;
 }
 
-.submit{
-  background-color: aliceblue;
-  color: rgb(66, 85, 90);
-  font-weight: bold;
-}
-
-.wrongAnswer{
+.wrongAnswer {
   border: 1px solid red !important;
   box-shadow: 0 1px 8px red !important;
 }
 
-#link{
+#link {
   font-weight: bold;
   color: aliceblue;
   margin-top: 1rem;
 }
 
-#button-submit{
-  width: 6rem !important;
+.button-submit {
+  margin: auto;
+  margin-top: 2rem;
+  width: 14rem !important;
 }
 
-#column{
+#column {
   display: flex;
   flex-direction: column;
 }

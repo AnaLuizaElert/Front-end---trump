@@ -4,22 +4,22 @@
 }
 
 .modal-content {
-    min-width: 20rem !important;
-    min-height: 10rem !important;
-    width: fit-content !important;
+  min-width: 20rem !important;
+  min-height: 10rem !important;
+  width: fit-content !important;
 }
 
-.modal-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .modal.show .modal-dialog {
-    transform: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  transform: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* CSS */
@@ -29,12 +29,12 @@
   border-radius: 10px;
 }
 
-.nextRound{
+.next-round {
   border-radius: 50px;
   margin-top: 1rem;
 }
 
-.text-winner{
+.text-winner {
   text-align: center;
   font-family: Blueberry;
 }

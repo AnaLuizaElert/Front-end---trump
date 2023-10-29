@@ -1,24 +1,25 @@
 //style
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import "./Login.css";
+import "../../utils/ButtonGame.css";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 //react
-import { useState } from 'react';
+import { useState } from "react";
 
 //service
-import { AuthenticationService } from '../../service/AuthenticationService';
+import { AuthenticationService } from "../../service/AuthenticationService";
 
 //utils
-import { addWrongAnswerLogin } from '../../utils/statusAnswer';
+import { addWrongAnswerLogin } from "../../utils/statusAnswer";
 
 function Login() {
-
   const [login, setLogin] = useState({
-    "username": "",
-    "password": ""
-  })
+    username: "",
+    password: "",
+  });
 
-  const arrayIds = ["name", "password"]
+  const arrayIds = ["name", "password"];
 
   function saveInfo(event) {
     event.preventDefault();
@@ -26,7 +27,7 @@ function Login() {
       .then((response) => {
         if (response) {
           localStorage.setItem("user", login.username);
-          window.location.href = '/home';
+          window.location.href = "/home";
         } else {
           addWrongAnswerLogin(arrayIds);
         }
@@ -37,32 +38,46 @@ function Login() {
   }
 
   return (
-    <Form className='container-content' onSubmit={saveInfo}>
+    <Form className="container-content" onSubmit={saveInfo}>
       <Form.Group className="mb-3">
-        <Form.Label >Name</Form.Label>
+        <p className="login-title">SuperTrunfo</p>
+        <Form.Label>Name</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter name"
-          id='name'
-          name='username'
+          id="name"
+          name="username"
           value={login.username}
-          onChange={(event) => setLogin({ ...login, username: event.target.value })} />
+          onChange={(event) =>
+            setLogin({ ...login, username: event.target.value })
+          }
+        />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"
-          id='password'
-          name='password'
+          id="password"
+          name="password"
           value={login.password}
-          onChange={(event) => setLogin({ ...login, password: event.target.value })} />
+          onChange={(event) =>
+            setLogin({ ...login, password: event.target.value })
+          }
+        />
       </Form.Group>
-      <div id='column'>
-        <Button variant="primary" type="submit" className='submit' id='button-submit'>
+      <div id="column">
+        <Button
+          variant="primary"
+          type="submit"
+          className="button-submit button-game"
+          id="button-submit"
+        >
           Submit
         </Button>
-        <a id="link" href="/register-person">Não possui uma conta?</a>
+        <a id="link" href="/register-person">
+          Don't you have an account?
+        </a>
       </div>
     </Form>
   );

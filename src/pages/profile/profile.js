@@ -1,26 +1,25 @@
 //style
-import './profile.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-
+import "./profile.css";
 //react
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 //components
-import NavBar from '../../components/nav-bar/Nav';
+import NavBar from "../../components/nav-bar/Nav";
 
 //service
-import { UserService } from '../../service/UserService';
+import { UserService } from "../../service/UserService";
+
+//images
+import FruitSalat from "../../img/fruit-salat.png";
 
 function Profile() {
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
   const [victoryQty, setVictoryQty] = useState(0);
   const [lossesQty, setLossesQty] = useState(0);
   const [points, setPoints] = useState(0);
 
   useEffect(() => {
-    UserService.showOneByName(localStorage.getItem('user'))
+    UserService.showOneByName(localStorage.getItem("user"))
       .then((response) => {
         setUserName(response.name);
         setVictoryQty(response.qtyVictories);
@@ -35,7 +34,47 @@ function Profile() {
   return (
     <>
       <NavBar />
-      <Container className='container-content'>
+      <div className="profile-container">
+        <div className="profile-box profile-left-box">
+          <div className="profile-box-name">
+            <p class="profile-item-name profile-text profile-card-shadow">
+              Ana Luiza Elert
+            </p>
+            <div class="profile-item-fruit">
+              <div class="profile-pear"></div>
+            </div>
+          </div>
+        </div>
+        <div className="profile-box profile-right-box">
+          <div className="profile-box-points profile-card-shadow">
+            <img className="profile-item-image-salat" src={FruitSalat} />
+            <div className="profile-item-points profile-card-shadow">
+              <p className="profile-text">POINTS</p>
+              <p className="profile-item-num-points">{points}</p>
+            </div>
+          </div>
+          <div className="profile-box-status">
+            <div className="profile-box-status-column">
+              <p className="profile-item-circle profile-card-shadow">
+                {victoryQty}
+              </p>
+              <p className="profile-item-name-status profile-text profile-card-shadow">
+                victories
+              </p>
+            </div>
+            <div className="profile-box-status-column">
+              <p className="profile-item-circle profile-card-shadow">
+                {lossesQty}
+              </p>
+              <p className="profile-item-name-status profile-text profile-card-shadow">
+                losses
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <Container className='container-content'>
         <Row>
           <Col className='name'>Name</Col>
           <Col className='ActName'>{userName}</Col>
@@ -52,7 +91,7 @@ function Profile() {
           <Col className='points'>Points</Col>
           <Col className='ActPoints'>{points}</Col>
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 }

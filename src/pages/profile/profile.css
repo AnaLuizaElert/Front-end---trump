@@ -1,0 +1,237 @@
+@font-face {
+  font-family: Blueberry;
+  src: url("../../fonts/Blueberry\ .ttf");
+}
+
+.profile-text {
+  font-family: Blueberry;
+  font-size: 1.5rem;
+}
+
+.profile-card-shadow {
+  box-shadow: rgba(99, 99, 99, 0.349) 0px 2px 8px 0px;
+  border-radius: 1rem;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 50rem;
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+}
+
+.profile-left-box {
+  width: 40%;
+  padding-left: 5%;
+}
+
+.profile-box-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+}
+
+.profile-item-name {
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+}
+
+.profile-item-fruit {
+  font-size: 1.2rem;
+  width: 100%;
+  height: 60%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pear {
+  width: 10.4em;
+  height: 10.4em;
+  background-color: #d7c322;
+  border-radius: 50% 15% 50% 50%;
+  transform: rotate(-45deg);
+  box-shadow: inset 0.15em 0.25em #c3b11f;
+}
+
+.profile-pear:after {
+  content: "";
+  width: 0.2em;
+  height: 2em;
+  background-color: brown;
+  position: absolute;
+  z-index: 2;
+  top: -1em;
+  left: 10.1em;
+  transform: rotate(45deg);
+}
+
+.profile-right-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60%;
+  padding-right: 5%;
+  background-color: #c3b11f;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+
+.profile-box-points {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5rem;
+  padding-left: 1rem;
+  width: 80%;
+  height: 10rem;
+}
+
+.profile-item-image-salat {
+  margin-top: -6rem;
+  height: 16rem;
+}
+
+.profile-item-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 16rem;
+}
+
+.profile-item-num-points {
+  font-size: 2rem;
+  font-family: Georgia;
+}
+
+.profile-box-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 1rem;
+  width: 80%;
+  height: 20rem;
+}
+
+.profile-box-status-column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  height: 7rem;
+  width: 90%;
+}
+
+.profile-item-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Times;
+  font-size: 3rem;
+  height: 100%;
+  width: 7rem;
+  border-radius: 50%;
+}
+
+.profile-item-name-status {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  width: 60%;
+  height: 70%;
+  border-radius: 1rem;
+}
+
+/* card */
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+.profile-box-name {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.profile-box-name::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #b1e33c 43%,
+    #c25e00
+  );
+  filter: blur(2.9px);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.profile-box-name::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #b1e33c 43%,
+    #c25e00
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
