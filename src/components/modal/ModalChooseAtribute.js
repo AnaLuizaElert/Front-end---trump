@@ -16,7 +16,7 @@ const ModalChooseAtribute = ({ setModalChooseAtribute, chooseAtribute }) => {
       centered
     >
       <Modal.Header>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title id="contained-modal-title-vcenter" className="modal-text">
           Choose an attribute to dispute
         </Modal.Title>
       </Modal.Header>

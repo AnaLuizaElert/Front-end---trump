@@ -35,9 +35,18 @@ const ModalWinner = ({
   }
 
   function returnFeedback() {
-    return `Chosen attribute: ${chosenAttribute.attribute}
-            Computer attribute: ${playerFirstCard[chosenAttribute.attribute]}
-            Player attribute: ${computerFirstCard[chosenAttribute.attribute]} `;
+    let attribute = chosenAttribute.attribute;
+    if (attribute == "qtyCalories") {
+      attribute = "qty calories";
+    } else if (attribute == "qtyGlucose") {
+      attribute = "index glucose";
+    } else if (attribute == "qtyProteins") {
+      attribute = "qty proteins";
+    }
+
+    return `Chosen attribute: ${attribute}
+            Computer attribute: ${computerFirstCard[chosenAttribute.attribute]}
+            Player attribute: ${playerFirstCard[chosenAttribute.attribute]} `;
   }
 
   return (
@@ -49,8 +58,8 @@ const ModalWinner = ({
       centered
     >
       <Modal.Body>
-        <h4 className="text-winner">{returnText()}</h4>
-        <p>{returnFeedback()}</p>
+        <h4 className="text-winner modal-text">{returnText()}</h4>
+        <p className="modal-feedback modal-text">{returnFeedback()}</p>
         {!gameOver && (
           <button onClick={playRound} className="next-round button-game">
             Next Round

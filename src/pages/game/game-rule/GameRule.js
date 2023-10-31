@@ -47,6 +47,9 @@ function GameRule() {
     url: "",
   });
 
+  const [playerFirstCardCopy, setPlayerFirstCardCopy] = useState(playerFirstCard);
+  const [computerFirstCardCopy, setComputerFirstCardCopy] = useState(computerFirstCard);
+
   const [computerCards, setComputerCards] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
   const [chosenAttribute, setChosenAttribute] = useState({
@@ -83,7 +86,7 @@ function GameRule() {
     allCards = await CardService.showAll();
     randomArray(allCards);
     if (level === "easy") {
-      allCards = allCards.slice(0, 8);
+      allCards = allCards.slice(0, 2);
     } else if (level === "normal") {
       allCards = allCards.slice(0, 16);
     } else {
@@ -140,7 +143,8 @@ function GameRule() {
   // Lógica da desistencia
   function giveUp() {
     updateUser();
-    navigate("/profile");
+    // navigate("/profile");
+    // window.location.href = "/profile";
   }
 
   // Misturar um array
@@ -150,35 +154,35 @@ function GameRule() {
 
   // Editar o usuário
   async function updateUser() {
-    try {
-      const user = await UserService.showOneByName(
-        localStorage.getItem("user")
-      );
-      let editedUser;
-      if (computerCards.length === 0) {
-        editedUser = {
-          points: parseInt(user.points) + 2,
-          qtyLosses: parseInt(user.qtyLosses),
-          qtyVictories: parseInt(user.qtyVictories) + 1,
-        };
-      } else {
-        editedUser = {
-          points: parseInt(user.points),
-          qtyLosses: parseInt(user.qtyLosses) + 1,
-          qtyVictories: parseInt(user.qtyVictories),
-        };
+    if (playerCards.length === 0 || computerCards.length === 0) {
+      try {
+        const user = await UserService.showOneByName(
+          localStorage.getItem("user")
+        );
+        let editedUser;
+        if (computerCards.length === 0) {
+          editedUser = {
+            points: parseInt(user.points) + 2,
+            qtyLosses: parseInt(user.qtyLosses),
+            qtyVictories: parseInt(user.qtyVictories) + 1,
+          };
+        } else {
+          editedUser = {
+            points: parseInt(user.points),
+            qtyLosses: parseInt(user.qtyLosses) + 1,
+            qtyVictories: parseInt(user.qtyVictories),
+          };
+        }
+        UserService.editBySytem(user.id, editedUser)
+      } catch (error) {
+        toast.error(error);
       }
-      UserService.editBySytem(user.id, editedUser);
-    } catch (error) {
-      toast.error(error);
     }
   }
 
   // Chame essa função sempre que as cartas do jogador ou do computador mudarem
   useEffect(() => {
-    if (playerCards.length !== 0 || computerCards.length !== 0) {
-      updateFirstCards();
-    }
+    updateFirstCards();
   }, [computerCards, playerCards]);
 
   // Mover a lógica de atualização das primeiras cartas para uma função
@@ -195,34 +199,43 @@ function GameRule() {
 
   const registerResultGame = () => {
     if (chosenAttribute) {
-      const playerValue = parseFloat(playerFirstCard[chosenAttribute]);
-      const computerValue = parseFloat(computerFirstCard[chosenAttribute]);
+      const playerValue = parseFloat(playerFirstCard[chosenAttribute.attribute]);
+      const computerValue = parseFloat(computerFirstCard[chosenAttribute.attribute]);
 
       let cardWithdrawn = {};
 
       if (playerValue > computerValue) {
         setRoundWinner("player");
-        cardWithdrawn = computerCards.shift();
-        playerCards.push(cardWithdrawn);
       } else {
         setRoundWinner("computer");
-        cardWithdrawn = playerCards.shift();
-        computerCards.push(cardWithdrawn);
       }
 
       if (playerCards.length === 0 || computerCards.length === 0) {
         setHasWinner(true);
-      } else {
-        randomArray(playerCards);
-        randomArray(computerCards);
       }
 
       setModalWinnerOpen(true);
 
+      // Atualize as cópias das cartas aqui
+      setPlayerFirstCardCopy({ ...playerFirstCard });
+      setComputerFirstCardCopy({ ...computerFirstCard });
+
+      if (playerValue > computerValue) {
+        cardWithdrawn = computerCards.shift();
+        playerCards.push(cardWithdrawn);
+      } else {
+        cardWithdrawn = playerCards.shift();
+        computerCards.push(cardWithdrawn);
+      }
+
+      randomArray(playerCards)
+      randomArray(computerCards)
+      updateFirstCards();
+
       if (computerCards.length === 0 || playerCards.length === 0) {
+        updateUser();
         setTimeout(() => {
-          updateUser();
-          navigate("/profile");
+          // navigate("/profile");
         }, 2000);
       }
     }
@@ -239,7 +252,7 @@ function GameRule() {
       </div>
 
       <div className="battle">
-        <button className="buttonGiveUp buttonGame" onClick={() => giveUp()}>
+        <button className="buttonGiveUp button-game" onClick={() => giveUp()}>
           Give up
         </button>
       </div>
@@ -275,8 +288,8 @@ function GameRule() {
           gameOver={hasWinner}
           roundWinner={roundWinner}
           chosenAttribute={chosenAttribute}
-          computerFirstCard={computerFirstCard}
-          playerFirstCard={playerFirstCard}
+          computerFirstCard={computerFirstCardCopy}
+          playerFirstCard={playerFirstCardCopy}
           playRound={playRound}
         />
       )}

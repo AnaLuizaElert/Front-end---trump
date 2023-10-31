@@ -37,11 +37,11 @@ function Profile() {
       <div className="profile-container">
         <div className="profile-box profile-left-box">
           <div className="profile-box-name">
-            <p class="profile-item-name profile-text profile-card-shadow">
+            <p className="profile-item-name profile-text profile-card-shadow">
               {userName}
             </p>
-            <div class="profile-item-fruit">
-              <div class="profile-pear"></div>
+            <div className="profile-item-fruit">
+              <div className="profile-pear"></div>
             </div>
           </div>
         </div>

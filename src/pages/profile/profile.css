@@ -16,9 +16,9 @@
 .profile-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: end;
   width: 100%;
-  height: 50rem;
+  height: 80vh;
 }
 
 .profile-box {
@@ -54,7 +54,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
 }
 
 .profile-pear {
@@ -83,7 +83,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 60%;
-  padding-right: 5%;
+  padding: 3% 0% 2% 1%;
   background-color: #c3b11f;
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
@@ -95,14 +95,14 @@
   justify-content: flex-start;
   align-items: center;
   gap: 5rem;
-  padding-left: 1rem;
-  width: 80%;
-  height: 10rem;
+  /* padding-left: 1rem; */
+  width: 90%;
+  height: 26%;
 }
 
 .profile-item-image-salat {
-  margin-top: -6rem;
-  height: 16rem;
+  margin-top: -4rem;
+  height: 160%;
 }
 
 .profile-item-points {
@@ -115,7 +115,7 @@
 }
 
 .profile-item-num-points {
-  font-size: 2rem;
+  font-size: 1rem;
   font-family: Georgia;
 }
 
@@ -134,7 +134,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 2rem;
-  height: 7rem;
+  height: 6rem;
   width: 90%;
 }
 
@@ -145,7 +145,7 @@
   font-family: Times;
   font-size: 3rem;
   height: 100%;
-  width: 7rem;
+  width: 6rem;
   border-radius: 50%;
 }
 

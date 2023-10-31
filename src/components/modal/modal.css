@@ -3,6 +3,10 @@
   src: url("../../fonts/Blueberry\ .ttf");
 }
 
+.modal-text{
+  color: black;
+}
+
 .modal-content {
   min-width: 20rem !important;
   min-height: 10rem !important;
@@ -22,7 +26,12 @@
   justify-content: center;
 }
 
-/* CSS */
+.modal-feedback{
+  white-space: pre-line;
+  text-align: center;
+}
+
+
 .choose-attribute {
   margin: 10px;
   padding: 15px 30px;

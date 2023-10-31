@@ -11,12 +11,12 @@ const ModalWhoPlays = ({ numRound, setModalPlayerRound }) => {
       centered
     >
       <Modal.Header>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title className="modal-text" id="contained-modal-title-vcenter">
           Round: {numRound}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>{numRound % 2 != 0 ? "Your turn" : "Computer turn"}</h4>
+        <h4 className="modal-text">{numRound % 2 != 0 ? "Your turn" : "Computer turn"}</h4>
       </Modal.Body>
     </Modal>
   );
